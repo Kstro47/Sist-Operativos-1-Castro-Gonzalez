@@ -61,6 +61,10 @@
               </Constraints>
             </Component>
             <Component class="javax.swing.JTextField" name="dayDuration">
+              <Properties>
+                <Property name="columns" type="int" value="4"/>
+                <Property name="name" type="java.lang.String" value="" noResource="true"/>
+              </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="dayDurationActionPerformed"/>
               </Events>
@@ -94,6 +98,9 @@
               </Constraints>
             </Component>
             <Component class="javax.swing.JTextField" name="shippingDeadline">
+              <Properties>
+                <Property name="columns" type="int" value="4"/>
+              </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="shippingDeadlineActionPerformed"/>
               </Events>
@@ -140,6 +147,9 @@
               </Constraints>
             </Component>
             <Component class="javax.swing.JTextField" name="screenWriterQtty">
+              <Properties>
+                <Property name="columns" type="int" value="4"/>
+              </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="screenWriterQttyActionPerformed"/>
               </Events>
@@ -163,6 +173,9 @@
               </Constraints>
             </Component>
             <Component class="javax.swing.JTextField" name="designerQtty">
+              <Properties>
+                <Property name="columns" type="int" value="4"/>
+              </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="designerQttyActionPerformed"/>
               </Events>
@@ -186,6 +199,9 @@
               </Constraints>
             </Component>
             <Component class="javax.swing.JTextField" name="animatorQtty">
+              <Properties>
+                <Property name="columns" type="int" value="4"/>
+              </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="animatorQttyActionPerformed"/>
               </Events>
@@ -209,6 +225,9 @@
               </Constraints>
             </Component>
             <Component class="javax.swing.JTextField" name="voiceActorsQtty">
+              <Properties>
+                <Property name="columns" type="int" value="4"/>
+              </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="voiceActorsQttyActionPerformed"/>
               </Events>
@@ -232,6 +251,9 @@
               </Constraints>
             </Component>
             <Component class="javax.swing.JTextField" name="plotTwistWritterQtty">
+              <Properties>
+                <Property name="columns" type="int" value="4"/>
+              </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="plotTwistWritterQttyActionPerformed"/>
               </Events>
@@ -255,6 +277,9 @@
               </Constraints>
             </Component>
             <Component class="javax.swing.JTextField" name="assemblersQtty">
+              <Properties>
+                <Property name="columns" type="int" value="4"/>
+              </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="assemblersQttyActionPerformed"/>
               </Events>
@@ -277,7 +302,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton1">
+            <Component class="javax.swing.JButton" name="saveChanges">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Yu Gothic UI Semibold" size="14" style="1"/>
@@ -285,11 +310,23 @@
                 <Property name="text" type="java.lang.String" value="Guardar"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="saveChangesActionPerformed"/>
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="200" y="400" width="-1" height="-1"/>
+                </Constraint>
+              </Constraints>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel2">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/sist/operativo/purple.PNG"/>
+                </Property>
+              </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="510" y="130" width="270" height="190"/>
                 </Constraint>
               </Constraints>
             </Component>

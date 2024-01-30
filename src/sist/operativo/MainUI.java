@@ -3,13 +3,22 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package sist.operativo;
-
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Scanner;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 /**
  *
  * @author Andrés Castro
  */
 public class MainUI extends javax.swing.JFrame {
-
+    
+    public String[] parametros;
+    public JTextField[] JTextFieldArray;
     /**
      * Creates new form NewJFrame
      */
@@ -18,8 +27,43 @@ public class MainUI extends javax.swing.JFrame {
         this.setVisible(true);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
+        this.JTextFieldArray = new JTextField[8];
+        this.JTextFieldArray[0] = dayDuration;
+        this.JTextFieldArray[1] = shippingDeadline;
+        this.JTextFieldArray[2] = screenWriterQtty;
+        this.JTextFieldArray[3] = designerQtty;
+        this.JTextFieldArray[4] = animatorQtty;
+        this.JTextFieldArray[5] = voiceActorsQtty;
+        this.JTextFieldArray[6] = plotTwistWritterQtty;
+        this.JTextFieldArray[7] = assemblersQtty;
+        
+        
+        String route = "src\\sist\\operativo\\parameters.txt";
+        try {
+            File archivo = new File(route);
+            try (Scanner scanner = new Scanner(archivo)) {
+                String linea = scanner.nextLine();
+                this.parametros = linea.split(",");
+            }
+        } catch (FileNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "Archivo no encontrado: " + e.getMessage());
+        }     
+        for (int i = 0; i < parametros.length; i++) {
+            this.JTextFieldArray[i].setText(parametros[i]);
+        }
     }
+    
+    public static int validNum(String numString) {
+        int num;
+        try {
+            num = Integer.parseInt(numString);
+            return num;
 
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Input Inválido: " + e.getMessage());
+        }
+        return -1;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -51,7 +95,8 @@ public class MainUI extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         assemblersQtty = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        saveChanges = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
 
@@ -64,6 +109,8 @@ public class MainUI extends javax.swing.JFrame {
         jLabel1.setText("Cantidades iniciales");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 150, 220, -1));
 
+        dayDuration.setColumns(4);
+        dayDuration.setName(""); // NOI18N
         dayDuration.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dayDurationActionPerformed(evt);
@@ -78,6 +125,7 @@ public class MainUI extends javax.swing.JFrame {
         jLabel4.setText("Duración de un día:");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, -1, -1));
 
+        shippingDeadline.setColumns(4);
         shippingDeadline.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 shippingDeadlineActionPerformed(evt);
@@ -96,6 +144,7 @@ public class MainUI extends javax.swing.JFrame {
         jLabel7.setText("Deadline de entrega:");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, -1, -1));
 
+        screenWriterQtty.setColumns(4);
         screenWriterQtty.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 screenWriterQttyActionPerformed(evt);
@@ -107,6 +156,7 @@ public class MainUI extends javax.swing.JFrame {
         jLabel8.setText("Guionistas:");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, -1, -1));
 
+        designerQtty.setColumns(4);
         designerQtty.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 designerQttyActionPerformed(evt);
@@ -118,6 +168,7 @@ public class MainUI extends javax.swing.JFrame {
         jLabel9.setText("Diseñador de escenarios:");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, -1, -1));
 
+        animatorQtty.setColumns(4);
         animatorQtty.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 animatorQttyActionPerformed(evt);
@@ -129,6 +180,7 @@ public class MainUI extends javax.swing.JFrame {
         jLabel10.setText("Animador de personajes:");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 260, -1, -1));
 
+        voiceActorsQtty.setColumns(4);
         voiceActorsQtty.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 voiceActorsQttyActionPerformed(evt);
@@ -140,6 +192,7 @@ public class MainUI extends javax.swing.JFrame {
         jLabel11.setText("Actores de doblaje:");
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 290, -1, -1));
 
+        plotTwistWritterQtty.setColumns(4);
         plotTwistWritterQtty.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 plotTwistWritterQttyActionPerformed(evt);
@@ -151,6 +204,7 @@ public class MainUI extends javax.swing.JFrame {
         jLabel12.setText("Guionista de PlotTwist:");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 320, -1, -1));
 
+        assemblersQtty.setColumns(4);
         assemblersQtty.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 assemblersQttyActionPerformed(evt);
@@ -162,14 +216,17 @@ public class MainUI extends javax.swing.JFrame {
         jLabel13.setText("Ensambladores:");
         jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 350, -1, -1));
 
-        jButton1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        jButton1.setText("Guardar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        saveChanges.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
+        saveChanges.setText("Guardar");
+        saveChanges.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                saveChangesActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 400, -1, -1));
+        jPanel1.add(saveChanges, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 400, -1, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sist/operativo/purple.PNG"))); // NOI18N
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 130, 270, 190));
 
         jTabbedPane1.addTab("Menú", jPanel1);
 
@@ -236,9 +293,29 @@ public class MainUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_assemblersQttyActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void saveChangesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveChangesActionPerformed
+        String texto = "";
+        String route = "src\\sist\\operativo\\parameters.txt";
+        for (int i = 0; i < 8; i++) {
+            if (validNum(this.JTextFieldArray[i].getText()) != -1 ) {
+                if (i == 7) {
+                    texto += this.JTextFieldArray[i].getText();
+                } else {
+                    texto += this.JTextFieldArray[i].getText() + ",";                
+                }               
+            } else {
+                break;
+            }
+
+        }
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(route))) {
+            bw.write(texto);
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "No se pudo guardar: " + e.getMessage());
+        }
+        
+        
+    }//GEN-LAST:event_saveChangesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -271,7 +348,7 @@ public class MainUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainUI().setVisible(true);
+                new MainUI().setVisible(true); 
             }
         });
     }
@@ -281,12 +358,12 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JTextField assemblersQtty;
     private javax.swing.JTextField dayDuration;
     private javax.swing.JTextField designerQtty;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -299,6 +376,7 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField plotTwistWritterQtty;
+    private javax.swing.JButton saveChanges;
     private javax.swing.JTextField screenWriterQtty;
     private javax.swing.JTextField shippingDeadline;
     private javax.swing.JTextField voiceActorsQtty;
