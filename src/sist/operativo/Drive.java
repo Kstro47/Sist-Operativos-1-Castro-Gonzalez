@@ -8,18 +8,10 @@ package sist.operativo;
  *
  * @author yilme
  */
-public class Worker extends Thread {
-    private int time;
-    private int type;
-    
-    public Worker(int time, int type){
-        this.time = time;
-        this.type = type;
-    }
-    
-    public void work(){
-        
-    }
-    
-    
+public class Drive {
+    public int scripts;
+    public int animations;
+    public int scenarios;
+    public int dubs;
+    public int plotTwist;
 }
