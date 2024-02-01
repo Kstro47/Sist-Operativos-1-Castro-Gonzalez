@@ -10,20 +10,60 @@ import javax.swing.JOptionPane;
  * @author Emilio Jr
  */
 public class Studio {
+    public static int time;    
+    
     public Semaphore scripts = new Semaphore(1);
+    public Semaphore scenarios = new Semaphore(1);
+    public Semaphore animations = new Semaphore(1);
+    public Semaphore dubs = new Semaphore(1);
+    public Semaphore plotTwists = new Semaphore(1);
+    
     public Drive drive = new Drive(this);
-    public static int time;
+    
     public Worker[] screenWriters;
+    public Worker[] designers;
+    public Worker[] animators;
+    public Worker[] dubsActor;
+    public Worker[] plotTwistsWriters;
     
     
-    public Studio(int screenWriters, int time){
+    public Studio(int screenWriters, int designers, int animators, int dubsActor, int plotTwistsWriters, int time){
         Studio.time = time;
         // Se inicializa un array con todos los guionistas del studio y empiezan a trabajar con .start()
         this.screenWriters = new Worker[screenWriters];
+        this.designers = new Worker[designers];
+        this.animators = new Worker[animators];
+        this.dubsActor = new Worker[dubsActor];
+        this.plotTwistsWriters = new Worker[plotTwistsWriters];
+        
         for (int i = 0; i < this.screenWriters.length; i++) {
             Worker worker = new Worker(0, this.drive, this.scripts);
             this.screenWriters[i] = worker;
             this.screenWriters[i].start();
+        }
+        
+        for (int i = 0; i < this.designers.length; i++) {
+            Worker worker = new Worker(1, this.drive, this.scenarios);
+            this.designers[i] = worker;
+            this.designers[i].start();
+        }
+        
+        for (int i = 0; i < this.animators.length; i++) {
+            Worker worker = new Worker(2, this.drive, this.animations);
+            this.animators[i] = worker;
+            this.animators[i].start();
+        }
+        
+        for (int i = 0; i < this.dubsActor.length; i++) {
+            Worker worker = new Worker(3, this.drive, this.dubs);
+            this.dubsActor[i] = worker;
+            this.dubsActor[i].start();
+        }
+        
+        for (int i = 0; i < this.plotTwistsWriters.length; i++) {
+            Worker worker = new Worker(4, this.drive, this.plotTwists);
+            this.plotTwistsWriters[i] = worker;
+            this.plotTwistsWriters[i].start();
         }
     }
     
@@ -32,5 +72,23 @@ public class Studio {
         JOptionPane.showMessageDialog(null, "Hasta la polla.");
     }
     
+    public void stopScenarios(){
+        // Aqui se detienen a los diseñadores de escenarios cuando el drive llega a su maximo.
+        JOptionPane.showMessageDialog(null, "Hasta la polla.");
+    }    
     
+    public void stopAnimations(){
+        // Aqui se detienen a los diseñadores de escenarios cuando el drive llega a su maximo.
+        JOptionPane.showMessageDialog(null, "Hasta la polla.");
+    }   
+    
+    public void stopDubs(){
+        // Aqui se detienen a los diseñadores de escenarios cuando el drive llega a su maximo.
+        JOptionPane.showMessageDialog(null, "Hasta la polla.");
+    }   
+    
+    public void stopPlotTwists(){
+        // Aqui se detienen a los diseñadores de escenarios cuando el drive llega a su maximo.
+        JOptionPane.showMessageDialog(null, "Hasta la polla.");
+    }               
 }

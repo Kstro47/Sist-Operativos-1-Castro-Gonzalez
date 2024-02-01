@@ -64,7 +64,8 @@ public class MainUI extends javax.swing.JFrame {
                 }
         }
         
-        Studio StudioCN = new Studio(Integer.parseInt(this.parametros[2]), 3000);
+        Studio StudioCN = new Studio(Integer.parseInt(this.parametros[2]), Integer.parseInt(this.parametros[3]), Integer.parseInt(this.parametros[4]), Integer.parseInt(this.parametros[5]), Integer.parseInt(this.parametros[6]), 3000);
+        System.out.println(StudioCN.animators.length);
     }
     
     // Validador de numeros

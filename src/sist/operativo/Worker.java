@@ -23,7 +23,7 @@ public class Worker extends Thread {
     private Semaphore trafficLight;
     private Drive drive;
     
-    public Worker(int type, Drive drive,Semaphore trafficLight){
+    public Worker(int type, Drive drive, Semaphore trafficLight){
         this.type = type;
         this.drive = drive;
         this.trafficLight = trafficLight;
@@ -74,10 +74,62 @@ public class Worker extends Thread {
                         this.trafficLight.acquire();
                         this.drive.saveScript();
                         this.trafficLight.release();
+                        this.daysWorked = 0;
                     } catch (InterruptedException ex) {
                      Logger.getLogger(Worker.class.getName()).log(Level.SEVERE, null, ex);
                     }  
-                }     
+                }
+                break;
+            case 1:
+                if (this.daysWorked > 4) {
+                    try {
+                        this.trafficLight.acquire();
+                        this.drive.saveScenario();
+                        this.trafficLight.release();
+                        this.daysWorked = 0;
+                    } catch (InterruptedException ex) {
+                     Logger.getLogger(Worker.class.getName()).log(Level.SEVERE, null, ex);
+                    }  
+                }
+                break;
+            case 2:
+                if (this.daysWorked > 1) {
+                    try {
+                        this.trafficLight.acquire();
+                        this.drive.saveAnimation();
+                        this.trafficLight.release();
+                        this.daysWorked = 0;
+                    } catch (InterruptedException ex) {
+                     Logger.getLogger(Worker.class.getName()).log(Level.SEVERE, null, ex);
+                    }  
+                }
+                break;
+            case 3:
+                if (this.daysWorked > 1) {
+                    try {
+                        this.trafficLight.acquire();
+                        this.drive.saveDub();
+                        this.trafficLight.release();
+                        this.daysWorked = 0;
+                    } catch (InterruptedException ex) {
+                     Logger.getLogger(Worker.class.getName()).log(Level.SEVERE, null, ex);
+                    }  
+                }
+                break;
+            case 4:
+                if (this.daysWorked > 2) {
+                    try {
+                        this.trafficLight.acquire();
+                        this.drive.savePlotTwist();
+                        this.trafficLight.release();
+                        this.daysWorked = 0;
+                    } catch (InterruptedException ex) {
+                     Logger.getLogger(Worker.class.getName()).log(Level.SEVERE, null, ex);
+                    }  
+                }
+                break;
+            default:
+                break;
         }      
     }
     
