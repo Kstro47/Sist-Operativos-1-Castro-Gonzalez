@@ -5,7 +5,6 @@
 package sist.operativo;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
@@ -28,6 +27,7 @@ public class MainUI extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         
+        // Array de cantidades asignadas desde la interfaz mediante cuadros de texto
         this.JTextFieldArray = new JTextField[8];
         this.JTextFieldArray[0] = dayDuration;
         this.JTextFieldArray[1] = shippingDeadline;
@@ -38,7 +38,7 @@ public class MainUI extends javax.swing.JFrame {
         this.JTextFieldArray[6] = plotTwistWritterQtty;
         this.JTextFieldArray[7] = assemblersQtty;
         
-        
+        // Lectura del TXT
         String route = "src\\sist\\operativo\\parameters.txt";
         try {
             File archivo = new File(route);
@@ -67,6 +67,7 @@ public class MainUI extends javax.swing.JFrame {
         Studio StudioCN = new Studio(Integer.parseInt(this.parametros[2]), 3000);
     }
     
+    // Validador de numeros
     public static int validNum(String numString) {
         int num;
         try {
@@ -306,7 +307,9 @@ public class MainUI extends javax.swing.JFrame {
     private void assemblersQttyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assemblersQttyActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_assemblersQttyActionPerformed
-
+    
+    
+    // Guarda cambios en TXT
     private void saveChangesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveChangesActionPerformed
         String texto = "";
         String route = "src\\sist\\operativo\\parameters.txt";

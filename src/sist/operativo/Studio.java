@@ -18,6 +18,7 @@ public class Studio {
     
     public Studio(int screenWriters, int time){
         Studio.time = time;
+        // Se inicializa un array con todos los guionistas del studio y empiezan a trabajar con .start()
         this.screenWriters = new Worker[screenWriters];
         for (int i = 0; i < this.screenWriters.length; i++) {
             Worker worker = new Worker(0, this.drive, this.scripts);
@@ -27,6 +28,7 @@ public class Studio {
     }
     
     public void stopScripts(){
+        // Aqui se detienen a los guionistas cuando el drive llega a su maximo.
         JOptionPane.showMessageDialog(null, "Hasta la polla.");
     }
     

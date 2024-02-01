@@ -22,10 +22,13 @@ public class Drive {
     }
     
     public void saveScript(){
+        
+        // Guarda los guiones en el drive
         if (this.scripts <= 25) {
             this.scripts += 1;
             System.out.println("Se tienen" + this.scripts);
         } else {
+            // Para el proceso de creacion de guiones al alcanzar el máximo
             this.studio.stopScripts();
         }
 

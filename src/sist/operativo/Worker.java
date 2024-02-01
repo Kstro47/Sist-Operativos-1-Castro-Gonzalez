@@ -55,16 +55,20 @@ public class Worker extends Thread {
         }
     }
     
+    // Suma el salario de un dia de trabajo al bolsillo del worker
     public void fortnight(){
         this.pocket += this.salary*24;
     }
     
+    
+    // El worker trabaja
     public void work(){
         this.daysWorked += 1;
         
         switch (this.type) {
             // 0 para Guionista 1 guión cada 4 días        
             case 0: 
+                // Si alcanza los 3 dias trabajados solicita permiso al drive para guardar el guión
                 if (this.daysWorked > 3) {
                     try {
                         this.trafficLight.acquire();
@@ -75,13 +79,14 @@ public class Worker extends Thread {
                     }  
                 }     
         }      
-       
-
     }
+    
+    
     
     @Override
     public void run(){
         while(true){
+            // Se suma salario, trabaja, y pasa un día.
             try {
                 fortnight();
                 work();
