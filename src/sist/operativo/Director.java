@@ -8,6 +8,6 @@ package sist.operativo;
  *
  * @author Emilio Jr
  */
-public class TrabajadorrCN {
+class Director {
     
 }

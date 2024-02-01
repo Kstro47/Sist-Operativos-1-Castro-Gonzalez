@@ -27,6 +27,7 @@ public class MainUI extends javax.swing.JFrame {
         this.setVisible(true);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
+        
         this.JTextFieldArray = new JTextField[8];
         this.JTextFieldArray[0] = dayDuration;
         this.JTextFieldArray[1] = shippingDeadline;
@@ -45,12 +46,25 @@ public class MainUI extends javax.swing.JFrame {
                 String linea = scanner.nextLine();
                 this.parametros = linea.split(",");
             }
-        } catch (FileNotFoundException e) {
-            JOptionPane.showMessageDialog(null, "Archivo no encontrado: " + e.getMessage());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
+            System.exit(0);
         }     
-        for (int i = 0; i < parametros.length; i++) {
-            this.JTextFieldArray[i].setText(parametros[i]);
+        for (int i = 0; i < 8; i++) {
+            try {
+                if (validNum(parametros[i]) != -1) {
+                    this.JTextFieldArray[i].setText(parametros[i]);               
+                } else {
+                    JOptionPane.showMessageDialog(null, "Error de datos introducidos en TXT.");
+                    System.exit(0);
+                }
+            } catch (Exception e){
+                    JOptionPane.showMessageDialog(null, "Error de datos introducidos en TXT.");
+                    System.exit(0);
+                }
         }
+        
+        Studio StudioCN = new Studio(Integer.parseInt(this.parametros[2]), 3000);
     }
     
     public static int validNum(String numString) {
@@ -349,6 +363,7 @@ public class MainUI extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new MainUI().setVisible(true); 
+
             }
         });
     }

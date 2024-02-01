@@ -8,6 +8,6 @@ package sist.operativo;
  *
  * @author Emilio Jr
  */
-class RelojCN {
+public class Ensamblador {
     
 }

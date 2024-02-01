@@ -14,7 +14,8 @@ public class SistOperativo {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        MainUI Main = new MainUI();
+        Main.setVisible(true);
     }
     
 }

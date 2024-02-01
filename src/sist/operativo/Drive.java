@@ -9,9 +9,25 @@ package sist.operativo;
  * @author yilme
  */
 public class Drive {
-    public int scripts;
-    public int animations;
-    public int scenarios;
-    public int dubs;
-    public int plotTwist;
+    public Studio studio;
+    public int scripts = 0;
+    public int animations= 0;
+    public int scenarios= 0;
+    public int dubs= 0;
+    public int plotTwist= 0;
+    
+    
+    public Drive(Studio studio){
+        this.studio = studio;
+    }
+    
+    public void saveScript(){
+        if (this.scripts <= 25) {
+            this.scripts += 1;
+            System.out.println("Se tienen" + this.scripts);
+        } else {
+            this.studio.stopScripts();
+        }
+
+    }
 }
