@@ -447,7 +447,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="120" y="150" width="10" height="40"/>
+                  <AbsoluteConstraints x="120" y="150" width="30" height="40"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -495,7 +495,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="120" y="180" width="10" height="40"/>
+                  <AbsoluteConstraints x="120" y="180" width="30" height="40"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -531,7 +531,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="javax.swing.JLabel" name="animacionesDisp1">
+            <Component class="javax.swing.JLabel" name="animacionesDisp">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI Black" size="12" style="1"/>
@@ -543,7 +543,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="120" y="210" width="10" height="40"/>
+                  <AbsoluteConstraints x="120" y="210" width="30" height="40"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -579,7 +579,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="javax.swing.JLabel" name="doblajesDisp1">
+            <Component class="javax.swing.JLabel" name="doblajesDisp">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI Black" size="12" style="1"/>
@@ -591,11 +591,11 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="120" y="240" width="10" height="40"/>
+                  <AbsoluteConstraints x="120" y="240" width="30" height="40"/>
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="javax.swing.JLabel" name="plotwistsDisp1">
+            <Component class="javax.swing.JLabel" name="plotwistsDisp">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI Black" size="12" style="1"/>
@@ -607,7 +607,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="120" y="270" width="10" height="40"/>
+                  <AbsoluteConstraints x="120" y="270" width="30" height="40"/>
                 </Constraint>
               </Constraints>
             </Component>

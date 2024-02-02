@@ -18,6 +18,8 @@ public class MainUI extends javax.swing.JFrame {
     
     public String[] parametros;
     public JTextField[] JTextFieldArray;
+    public Studio StudioCN;
+    public Studio StudioNK;
     /**
      * Creates new form NewJFrame
      */
@@ -64,8 +66,15 @@ public class MainUI extends javax.swing.JFrame {
                 }
         }
         
-        Studio StudioCN = new Studio(0, Integer.parseInt(this.parametros[2]), Integer.parseInt(this.parametros[3]), Integer.parseInt(this.parametros[4]), Integer.parseInt(this.parametros[5]), Integer.parseInt(this.parametros[6]), Integer.parseInt(this.parametros[7]), Integer.parseInt(this.parametros[0]));
-
+        Studio StudioCN = new Studio(0, Integer.parseInt(this.parametros[2]), Integer.parseInt(this.parametros[3]), Integer.parseInt(this.parametros[4]), Integer.parseInt(this.parametros[5]), Integer.parseInt(this.parametros[6]), Integer.parseInt(this.parametros[7]), Integer.parseInt(this.parametros[0])*1000);
+        while (true){
+            guionesDisp.setText(Integer.toString(StudioCN.drive.scripts));
+            escenariosDisp.setText(Integer.toString(StudioCN.drive.scenarios));
+            animacionesDisp.setText(Integer.toString(StudioCN.drive.animations));
+            doblajesDisp.setText(Integer.toString(StudioCN.drive.dubs));
+            plotwistsDisp.setText(Integer.toString(StudioCN.drive.plotTwists));
+        }
+        
     }
     
     // Validador de numeros
@@ -127,11 +136,11 @@ public class MainUI extends javax.swing.JFrame {
         escenariosDisp = new javax.swing.JLabel();
         doblajesMax = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
-        animacionesDisp1 = new javax.swing.JLabel();
+        animacionesDisp = new javax.swing.JLabel();
         plotwistsMax = new javax.swing.JLabel();
         jLabel33 = new javax.swing.JLabel();
-        doblajesDisp1 = new javax.swing.JLabel();
-        plotwistsDisp1 = new javax.swing.JLabel();
+        doblajesDisp = new javax.swing.JLabel();
+        plotwistsDisp = new javax.swing.JLabel();
         jLabel34 = new javax.swing.JLabel();
         jLabel35 = new javax.swing.JLabel();
         guionCont1 = new javax.swing.JSpinner();
@@ -336,7 +345,7 @@ public class MainUI extends javax.swing.JFrame {
         guionesDisp.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         guionesDisp.setForeground(new java.awt.Color(0, 0, 0));
         guionesDisp.setText("0");
-        jPanel2.add(guionesDisp, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, 10, 40));
+        jPanel2.add(guionesDisp, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, 30, 40));
 
         animacionesMax.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         animacionesMax.setForeground(new java.awt.Color(0, 0, 0));
@@ -351,7 +360,7 @@ public class MainUI extends javax.swing.JFrame {
         escenariosDisp.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         escenariosDisp.setForeground(new java.awt.Color(0, 0, 0));
         escenariosDisp.setText("0");
-        jPanel2.add(escenariosDisp, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, 10, 40));
+        jPanel2.add(escenariosDisp, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, 30, 40));
 
         doblajesMax.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         doblajesMax.setForeground(new java.awt.Color(0, 0, 0));
@@ -363,10 +372,10 @@ public class MainUI extends javax.swing.JFrame {
         jLabel32.setText("Animaciones");
         jPanel2.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 90, 40));
 
-        animacionesDisp1.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
-        animacionesDisp1.setForeground(new java.awt.Color(0, 0, 0));
-        animacionesDisp1.setText("0");
-        jPanel2.add(animacionesDisp1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, 10, 40));
+        animacionesDisp.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        animacionesDisp.setForeground(new java.awt.Color(0, 0, 0));
+        animacionesDisp.setText("0");
+        jPanel2.add(animacionesDisp, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, 30, 40));
 
         plotwistsMax.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         plotwistsMax.setForeground(new java.awt.Color(0, 0, 0));
@@ -378,15 +387,15 @@ public class MainUI extends javax.swing.JFrame {
         jLabel33.setText("Doblajes");
         jPanel2.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 90, 40));
 
-        doblajesDisp1.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
-        doblajesDisp1.setForeground(new java.awt.Color(0, 0, 0));
-        doblajesDisp1.setText("0");
-        jPanel2.add(doblajesDisp1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 240, 10, 40));
+        doblajesDisp.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        doblajesDisp.setForeground(new java.awt.Color(0, 0, 0));
+        doblajesDisp.setText("0");
+        jPanel2.add(doblajesDisp, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 240, 30, 40));
 
-        plotwistsDisp1.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
-        plotwistsDisp1.setForeground(new java.awt.Color(0, 0, 0));
-        plotwistsDisp1.setText("0");
-        jPanel2.add(plotwistsDisp1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 270, 10, 40));
+        plotwistsDisp.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        plotwistsDisp.setForeground(new java.awt.Color(0, 0, 0));
+        plotwistsDisp.setText("0");
+        jPanel2.add(plotwistsDisp, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 270, 30, 40));
 
         jLabel34.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         jLabel34.setForeground(new java.awt.Color(0, 0, 0));
@@ -706,13 +715,13 @@ public class MainUI extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new MainUI().setVisible(true); 
-
+                
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel animacionesDisp1;
+    private javax.swing.JLabel animacionesDisp;
     private javax.swing.JLabel animacionesMax;
     private javax.swing.JSpinner animadoresCont1;
     private javax.swing.JTextField animatorQtty;
@@ -726,7 +735,7 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JLabel directorStateLabel;
     private javax.swing.JSpinner diseñadorEsceCont1;
     private javax.swing.JSpinner dobladoresCont1;
-    private javax.swing.JLabel doblajesDisp1;
+    private javax.swing.JLabel doblajesDisp;
     private javax.swing.JLabel doblajesMax;
     private javax.swing.JSpinner ensambladoresCont;
     private javax.swing.JLabel escenariosDisp;
@@ -781,7 +790,7 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField plotTwistWritterQtty;
     private javax.swing.JSpinner plotwistersCont1;
-    private javax.swing.JLabel plotwistsDisp1;
+    private javax.swing.JLabel plotwistsDisp;
     private javax.swing.JLabel plotwistsMax;
     private javax.swing.JLabel pmStateLabel;
     private javax.swing.JButton saveChanges;

@@ -69,62 +69,74 @@ public class Worker extends Thread {
             case 0 -> { 
                 // Si alcanza los 3 dias trabajados solicita permiso al drive para guardar el guión
                 if (this.daysWorked > 3) {
-                    try {
-                        this.trafficLight.acquire();
-                        this.drive.saveScript();
-                        this.trafficLight.release();
-                        this.daysWorked = 0;
-                    } catch (InterruptedException e) {
-                        Logger.getLogger(Worker.class.getName()).log(Level.SEVERE, null, e);
-                    }  
+                    if (!this.drive.fullScripts()) {
+                        try {
+                            this.trafficLight.acquire();
+                            this.drive.saveScript();
+                            this.trafficLight.release();
+                            this.daysWorked = 0;
+                        } catch (InterruptedException e) {
+                            Logger.getLogger(Worker.class.getName()).log(Level.SEVERE, null, e);
+                        } 
+                    }
+                     
                 }
             }
             case 1 -> {
                 if (this.daysWorked > 4) {
-                    try {
-                        this.trafficLight.acquire();
-                        this.drive.saveScenario();
-                        this.trafficLight.release();
-                        this.daysWorked = 0;
-                    } catch (InterruptedException e) {
-                        Logger.getLogger(Worker.class.getName()).log(Level.SEVERE, null, e);
-                    }  
+                    if (!this.drive.fullScenarios()) {
+                        try {
+                            this.trafficLight.acquire();
+                            this.drive.saveScenario();
+                            this.trafficLight.release();
+                            this.daysWorked = 0;
+                        } catch (InterruptedException e) {
+                            Logger.getLogger(Worker.class.getName()).log(Level.SEVERE, null, e);
+                        } 
+                    }
+                     
                 }
             }
             case 2 -> {
                 if (this.daysWorked > 1) {
-                    try {
-                        this.trafficLight.acquire();
-                        this.drive.saveAnimation();
-                        this.trafficLight.release();
-                        this.daysWorked = 0;
-                    } catch (InterruptedException e) {
-                        Logger.getLogger(Worker.class.getName()).log(Level.SEVERE, null, e);
-                    }  
+                    if (!this.drive.fullAnimations()) {
+                        try {
+                            this.trafficLight.acquire();
+                            this.drive.saveAnimation();
+                            this.trafficLight.release();
+                            this.daysWorked = 0;
+                        } catch (InterruptedException e) {
+                            Logger.getLogger(Worker.class.getName()).log(Level.SEVERE, null, e);
+                        } 
+                    }
                 }
             }
             case 3 -> {
                 if (this.daysWorked > 1) {
-                    try {
-                        this.trafficLight.acquire();
-                        this.drive.saveDub();
-                        this.trafficLight.release();
-                        this.daysWorked = 0;
-                    } catch (InterruptedException e) {
-                        Logger.getLogger(Worker.class.getName()).log(Level.SEVERE, null, e);
-                    }  
+                    if (!this.drive.fullDubs()) {
+                        try {
+                            this.trafficLight.acquire();
+                            this.drive.saveDub();
+                            this.trafficLight.release();
+                            this.daysWorked = 0;
+                        } catch (InterruptedException e) {
+                            Logger.getLogger(Worker.class.getName()).log(Level.SEVERE, null, e);
+                        }  
+                    }                    
                 }
             }
             case 4 -> {
                 if (this.daysWorked > 2) {
-                    try {
-                        this.trafficLight.acquire();
-                        this.drive.savePlotTwist();
-                        this.trafficLight.release();
-                        this.daysWorked = 0;
-                    } catch (InterruptedException e) {
-                        Logger.getLogger(Worker.class.getName()).log(Level.SEVERE, null, e);
-                    }  
+                    if (!this.drive.fullPlotTwists()) {
+                        try {
+                            this.trafficLight.acquire();
+                            this.drive.savePlotTwist();
+                            this.trafficLight.release();
+                            this.daysWorked = 0;
+                        } catch (InterruptedException e) {
+                            Logger.getLogger(Worker.class.getName()).log(Level.SEVERE, null, e);
+                        }  
+                    }                   
                 }
             }
             default -> {
@@ -144,7 +156,6 @@ public class Worker extends Thread {
                 work();
                 System.out.println("chill");
                 sleep(Studio.time);
-                
             } catch (InterruptedException e) {
                 Logger.getLogger(Worker.class.getName()).log(Level.SEVERE, null, e);
             }

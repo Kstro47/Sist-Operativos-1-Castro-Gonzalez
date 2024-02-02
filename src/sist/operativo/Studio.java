@@ -79,30 +79,5 @@ public class Studio {
             this.assemblers[i] = assembler;
             this.assemblers[i].start();
         }
-    }
-    
-    public void stopScripts(){
-        // Aqui se detienen a los guionistas cuando el drive llega a su maximo.
-        JOptionPane.showMessageDialog(null, "Hasta la polla.");
-    }
-    
-    public void stopScenarios(){
-        // Aqui se detienen a los diseñadores de escenarios cuando el drive llega a su maximo.
-        JOptionPane.showMessageDialog(null, "Hasta la polla.");
-    }    
-    
-    public void stopAnimations(){
-        // Aqui se detienen a los diseñadores de escenarios cuando el drive llega a su maximo.
-        JOptionPane.showMessageDialog(null, "Hasta la polla.");
-    }   
-    
-    public void stopDubs(){
-        // Aqui se detienen a los diseñadores de escenarios cuando el drive llega a su maximo.
-        JOptionPane.showMessageDialog(null, "Hasta la polla.");
-    }   
-    
-    public void stopPlotTwists(){
-        // Aqui se detienen a los diseñadores de escenarios cuando el drive llega a su maximo.
-        JOptionPane.showMessageDialog(null, "Hasta la polla.");
-    }               
+    }            
 }
