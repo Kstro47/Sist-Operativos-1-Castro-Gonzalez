@@ -20,7 +20,7 @@ public class ProjectManager extends Thread{
     private String pmState;/*Está trabajando o viendo anime*/
     private float pmSalary;/*Cantidad de dinero que gana por hora*/
     private float totalPmSalary; /*Cantidad total de su salario para saber la utilidad total*/
-    private int pmFaults; /*int para saer la cantidad de faltas del pm*/
+    private int pmFaults; /*int para saber la cantidad de faltas del pm*/
     private volatile int deadlineCount;
     
     public ProjectManager (int deadlineCount) {
