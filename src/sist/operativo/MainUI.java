@@ -506,7 +506,7 @@ public class MainUI extends javax.swing.JFrame {
         jLabel23.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         jLabel23.setForeground(new java.awt.Color(0, 0, 0));
         jLabel23.setText("TRABAJADORES y PARTES");
-        jPanel2.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 310, 40));
+        jPanel2.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 310, 40));
 
         jLabel18.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(0, 0, 0));
@@ -536,7 +536,7 @@ public class MainUI extends javax.swing.JFrame {
         jLabel27.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         jLabel27.setForeground(new java.awt.Color(0, 0, 0));
         jLabel27.setText("Drive");
-        jPanel2.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, 80, 40));
+        jPanel2.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 80, 40));
 
         escenariosMax.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         escenariosMax.setForeground(new java.awt.Color(0, 0, 0));

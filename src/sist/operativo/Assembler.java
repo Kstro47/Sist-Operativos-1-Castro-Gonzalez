@@ -78,6 +78,7 @@ public class Assembler extends Thread{
         checkParts();
         int aux = 0;
         for (int i = 0; i < 5; i++) {
+            System.out.println(this.episodeParts[i]);
             if (this.episodeParts[i] == true){
                 aux += 1;
             }
@@ -93,6 +94,9 @@ public class Assembler extends Thread{
                 this.drive.scenarios -= 2;
                 this.drive.animations -= 6;
                 this.drive.dubs -= 5;
+            }
+            for (int i = 0; i < this.episodeParts.length; i++) {
+                this.episodeParts[i] = false;
             }
             return 1;
         } 
@@ -111,6 +115,9 @@ public class Assembler extends Thread{
                 this.drive.dubs -= 5;
                 this.drive.plotTwists -= 1;
                 this.counter = 0;
+            }
+            for (int i = 0; i < this.episodeParts.length; i++) {
+                this.episodeParts[i] = false;
             }
             return 2;
         }
@@ -146,6 +153,7 @@ public class Assembler extends Thread{
                         try {
                             this.trafficLight.acquire();
                             this.drive.episodes += 1;
+                            this.counter += 1;
                             System.out.println("lo hice ");
                             this.trafficLight.release();
                             this.daysWorked = 0;
@@ -158,6 +166,7 @@ public class Assembler extends Thread{
                         try {
                             this.trafficLight.acquire();
                             this.drive.episodesPT += 1;
+                            this.counter += 1;
                             System.out.println("lo hice pt");
                             this.trafficLight.release();
                             this.daysWorked = 0;
