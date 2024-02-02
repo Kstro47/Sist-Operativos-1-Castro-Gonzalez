@@ -9,5 +9,9 @@ package sist.operativo;
  * @author Andrés Castro
  */
 public class Counter {
+    public int days;
     
+    public Counter(int days){
+        this.days = days;
+    }
 }

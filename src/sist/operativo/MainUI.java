@@ -644,7 +644,6 @@ public class MainUI extends javax.swing.JFrame {
             } else {
                 break;
             }
-
         }
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(route))) {
             bw.write(texto);
