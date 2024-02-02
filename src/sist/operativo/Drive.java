@@ -16,6 +16,8 @@ public class Drive {
     public int dubs= 0;
     public int plotTwists= 0;
     
+    public int episodes = 0;
+    public int episodesPT = 0;
     
     public Drive(Studio studio){
         this.studio = studio;

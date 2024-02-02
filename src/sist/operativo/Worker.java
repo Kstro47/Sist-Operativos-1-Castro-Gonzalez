@@ -66,8 +66,7 @@ public class Worker extends Thread {
         this.daysWorked += 1;
         
         switch (this.type) {
-            // 0 para Guionista 1 guión cada 4 días        
-            case 0: 
+            case 0 -> { 
                 // Si alcanza los 3 dias trabajados solicita permiso al drive para guardar el guión
                 if (this.daysWorked > 3) {
                     try {
@@ -75,63 +74,64 @@ public class Worker extends Thread {
                         this.drive.saveScript();
                         this.trafficLight.release();
                         this.daysWorked = 0;
-                    } catch (InterruptedException ex) {
-                     Logger.getLogger(Worker.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (InterruptedException e) {
+                        Logger.getLogger(Worker.class.getName()).log(Level.SEVERE, null, e);
                     }  
                 }
-                break;
-            case 1:
+            }
+            case 1 -> {
                 if (this.daysWorked > 4) {
                     try {
                         this.trafficLight.acquire();
                         this.drive.saveScenario();
                         this.trafficLight.release();
                         this.daysWorked = 0;
-                    } catch (InterruptedException ex) {
-                     Logger.getLogger(Worker.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (InterruptedException e) {
+                        Logger.getLogger(Worker.class.getName()).log(Level.SEVERE, null, e);
                     }  
                 }
-                break;
-            case 2:
+            }
+            case 2 -> {
                 if (this.daysWorked > 1) {
                     try {
                         this.trafficLight.acquire();
                         this.drive.saveAnimation();
                         this.trafficLight.release();
                         this.daysWorked = 0;
-                    } catch (InterruptedException ex) {
-                     Logger.getLogger(Worker.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (InterruptedException e) {
+                        Logger.getLogger(Worker.class.getName()).log(Level.SEVERE, null, e);
                     }  
                 }
-                break;
-            case 3:
+            }
+            case 3 -> {
                 if (this.daysWorked > 1) {
                     try {
                         this.trafficLight.acquire();
                         this.drive.saveDub();
                         this.trafficLight.release();
                         this.daysWorked = 0;
-                    } catch (InterruptedException ex) {
-                     Logger.getLogger(Worker.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (InterruptedException e) {
+                        Logger.getLogger(Worker.class.getName()).log(Level.SEVERE, null, e);
                     }  
                 }
-                break;
-            case 4:
+            }
+            case 4 -> {
                 if (this.daysWorked > 2) {
                     try {
                         this.trafficLight.acquire();
                         this.drive.savePlotTwist();
                         this.trafficLight.release();
                         this.daysWorked = 0;
-                    } catch (InterruptedException ex) {
-                     Logger.getLogger(Worker.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (InterruptedException e) {
+                        Logger.getLogger(Worker.class.getName()).log(Level.SEVERE, null, e);
                     }  
                 }
-                break;
-            default:
-                break;
-        }      
-    }
+            }
+            default -> {
+            }
+        }
+        // 0 para Guionista 1 guión cada 4 días
+            }
     
     
     
@@ -145,8 +145,8 @@ public class Worker extends Thread {
                 System.out.println("chill");
                 sleep(Studio.time);
                 
-            } catch (InterruptedException ex) {
-                Logger.getLogger(Worker.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (InterruptedException e) {
+                Logger.getLogger(Worker.class.getName()).log(Level.SEVERE, null, e);
             }
         }
     }
