@@ -10,7 +10,9 @@ import javax.swing.JOptionPane;
  * @author Emilio Jr
  */
 public class Studio {
-    public static int time;    
+    public static int dayDuration;    
+    public static Counter counter;
+    
     
     public static int type;
     
@@ -22,6 +24,8 @@ public class Studio {
     
     public Semaphore parts = new Semaphore(1);
     
+    public Semaphore counterAccess = new Semaphore(1);
+    
     public Drive drive = new Drive(this);
     
     public Worker[] screenWriters;
@@ -32,10 +36,12 @@ public class Studio {
     
     public Assembler[] assemblers;
     
+    public ProjectManager pm;
     
-    public Studio(int type, int screenWriters, int designers, int animators, int dubsActor, int plotTwistsWriters, int assemblers, int time){
-        Studio.time = time;
+    public Studio( int dayDuration, int deadLine, int screenWriters, int designers, int animators, int dubsActor, int plotTwistsWriters, int assemblers, int type){
+        Studio.dayDuration = dayDuration;
         Studio.type = type;
+        Studio.counter = new Counter(deadLine);
         // Se inicializa un array con todos los guionistas del studio y empiezan a trabajar con .start()
         this.screenWriters = new Worker[screenWriters];
         this.designers = new Worker[designers];
@@ -43,6 +49,7 @@ public class Studio {
         this.dubsActor = new Worker[dubsActor];
         this.plotTwistsWriters = new Worker[plotTwistsWriters];
         this.assemblers = new Assembler[assemblers];
+        
         
         for (int i = 0; i < this.screenWriters.length; i++) {
             Worker worker = new Worker(0, this.drive, this.scripts);
@@ -75,9 +82,13 @@ public class Studio {
         }
         
         for (int i = 0; i < this.assemblers.length; i++) {
-            Assembler assembler = new Assembler(Studio.type, this.drive, this.parts, Studio.time);
+            Assembler assembler = new Assembler(Studio.type, this.drive, this.parts, Studio.dayDuration);
             this.assemblers[i] = assembler;
             this.assemblers[i].start();
         }
+        
+        this.pm = new ProjectManager(dayDuration, this.counterAccess);
+        this.pm.start();
+        
     }            
 }

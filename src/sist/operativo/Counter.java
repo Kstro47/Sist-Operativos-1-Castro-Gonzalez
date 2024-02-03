@@ -9,9 +9,15 @@ package sist.operativo;
  * @author Andrés Castro
  */
 public class Counter {
-    public int days;
+    public int daysLeft;
+    public int deadLine;
     
-    public Counter(int days){
-        this.days = days;
+    public Counter(int daysLeft){
+        this.daysLeft = daysLeft;
+        this.deadLine = daysLeft;
+    }
+    
+    public void reset(){
+        this.daysLeft = this.deadLine;
     }
 }

@@ -155,7 +155,7 @@ public class Worker extends Thread {
                 fortnight();
                 work();
                 System.out.println("chill");
-                sleep(Studio.time);
+                sleep(Studio.dayDuration);
             } catch (InterruptedException e) {
                 Logger.getLogger(Worker.class.getName()).log(Level.SEVERE, null, e);
             }

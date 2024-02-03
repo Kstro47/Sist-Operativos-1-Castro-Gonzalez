@@ -66,13 +66,15 @@ public class MainUI extends javax.swing.JFrame {
                 }
         }
         
-        Studio StudioCN = new Studio(0, Integer.parseInt(this.parametros[2]), Integer.parseInt(this.parametros[3]), Integer.parseInt(this.parametros[4]), Integer.parseInt(this.parametros[5]), Integer.parseInt(this.parametros[6]), Integer.parseInt(this.parametros[7]), Integer.parseInt(this.parametros[0])*1000);
+        Studio StudioCN = new Studio(Integer.parseInt(this.parametros[0])*1000, Integer.parseInt(this.parametros[1]), Integer.parseInt(this.parametros[2]), Integer.parseInt(this.parametros[3]), Integer.parseInt(this.parametros[4]), Integer.parseInt(this.parametros[5]), Integer.parseInt(this.parametros[6]), Integer.parseInt(this.parametros[7]), 0);
         while (true){
             guionesDisp.setText(Integer.toString(StudioCN.drive.scripts));
             escenariosDisp.setText(Integer.toString(StudioCN.drive.scenarios));
             animacionesDisp.setText(Integer.toString(StudioCN.drive.animations));
             doblajesDisp.setText(Integer.toString(StudioCN.drive.dubs));
             plotwistsDisp.setText(Integer.toString(StudioCN.drive.plotTwists));
+            pmStateLabel.setText(StudioCN.pm.state);
+            daysLeftLabel.setText(Integer.toString(Studio.counter.daysLeft));
         }
         
     }
@@ -153,7 +155,7 @@ public class MainUI extends javax.swing.JFrame {
         jLabel39 = new javax.swing.JLabel();
         plotwistersCont1 = new javax.swing.JSpinner();
         jLabel40 = new javax.swing.JLabel();
-        diasFaltantes1 = new javax.swing.JLabel();
+        daysLeftLabel = new javax.swing.JLabel();
         pmStateLabel = new javax.swing.JLabel();
         directorStateLabel = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
@@ -522,10 +524,10 @@ public class MainUI extends javax.swing.JFrame {
         jLabel40.setText("GANANCIA TOTAL = ");
         jPanel2.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 30, 200, 50));
 
-        diasFaltantes1.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
-        diasFaltantes1.setForeground(new java.awt.Color(0, 0, 0));
-        diasFaltantes1.setText("0");
-        jPanel2.add(diasFaltantes1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 0, 60, 50));
+        daysLeftLabel.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        daysLeftLabel.setForeground(new java.awt.Color(0, 0, 0));
+        daysLeftLabel.setText("0");
+        jPanel2.add(daysLeftLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 0, 60, 50));
 
         pmStateLabel.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         pmStateLabel.setForeground(new java.awt.Color(0, 0, 0));
@@ -1068,9 +1070,13 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JLabel capitulosPlotListos;
     private javax.swing.JLabel capitulosPlotListos1;
     private javax.swing.JTextField dayDuration;
+    private javax.swing.JLabel daysLeftLabel;
     private javax.swing.JTextField designerQtty;
+<<<<<<< Updated upstream
     private javax.swing.JLabel diasFaltantes1;
     private javax.swing.JLabel diasFaltantes2;
+=======
+>>>>>>> Stashed changes
     private javax.swing.JTextField dineroDescTotalPM;
     private javax.swing.JTextField dineroDescTotalPM1;
     private javax.swing.JLabel directorStateLabel;

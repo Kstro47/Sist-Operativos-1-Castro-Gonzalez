@@ -86,47 +86,47 @@ public class Director extends Thread{
     }
     
     /*resetea el counter*/
-    public boolean resetCounter(){
-        try {
-            trafficLight.acquire();
-            if (ProjectManager.getDeadlineCount <= 0) {
-                ProjectManager.setDealinCount(getOriginalReleaseDays());
-                trafficLight.release();
-                return true;
-            }
-            trafficLight.release();
-            return false;
-           
-            
-        } catch (InterruptedException ex) {
-            Logger.getLogger(Director.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return false;
-    }
-    
-    public void directorWorkday(){
-        Random random = new Random();
-        setDirectorState("Trabajando");
-        float startSeePm = (random.nextInt(24));  /*genera un número random entre 0 y 23 horas*/
-        float timeToSeePm = 35; /*35 minutos viendo al pm*/
-        try {
-            // Trabajar normalmente
-            sleep();
-            // Vigilar al PM en el horario aleatorio
-            setDirectorState("Vigilando al PM");
-            sleepForMinutes(timeToSeePm);
-            setDirectorState("Trabajando");
-            sleep();
-            // Dormir (el resto del día)
-        } catch (InterruptedException ex) {
-            Logger.getLogger(Director.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    public void giveFaultToPm(){
-        ProjectManager.setTotalPmSalary(ProjectManager.getTotalPmSalary()-1);
-        ProjectManager.setPmFaults(ProjectManager.getPmFaults()+1);
-        String faultLabel = ( String.valueOf(ProjectManager.getFaults())+ " faltas");
-    }
-    
+//    public boolean resetCounter(){
+//        try {
+//            trafficLight.acquire();
+//            if (ProjectManager.getDeadlineCount <= 0) {
+//                ProjectManager.setDealinCount(getOriginalReleaseDays());
+//                trafficLight.release();
+//                return true;
+//            }
+//            trafficLight.release();
+//            return false;
+//           
+//            
+//        } catch (InterruptedException ex) {
+//            Logger.getLogger(Director.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        return false;
+//    }
+//    
+//    public void directorWorkday(){
+//        Random random = new Random();
+//        setDirectorState("Trabajando");
+//        float startSeePm = (random.nextInt(24));  /*genera un número random entre 0 y 23 horas*/
+//        float timeToSeePm = 35; /*35 minutos viendo al pm*/
+//        try {
+//            // Trabajar normalmente
+//            sleep();
+//            // Vigilar al PM en el horario aleatorio
+//            setDirectorState("Vigilando al PM");
+//            sleepForMinutes(timeToSeePm);
+//            setDirectorState("Trabajando");
+//            sleep();
+//            // Dormir (el resto del día)
+//        } catch (InterruptedException ex) {
+//            Logger.getLogger(Director.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//    }
+//    public void giveFaultToPm(){
+//        ProjectManager.setTotalPmSalary(ProjectManager.getTotalPmSalary()-1);
+//        ProjectManager.setPmFaults(ProjectManager.getPmFaults()+1);
+//        String faultLabel = ( String.valueOf(ProjectManager.getFaults())+ " faltas");
+//    }
+//    
     
 }

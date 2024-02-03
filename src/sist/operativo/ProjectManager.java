@@ -16,119 +16,71 @@ import java.util.logging.Logger;
  * @author Emilio Jr
  */
 public class ProjectManager extends Thread{
-    private Semaphore trafficLight;
-    private String pmState;/*Está trabajando o viendo anime*/
-    private float pmSalary;/*Cantidad de dinero que gana por hora*/
-    private float totalPmSalary; /*Cantidad total de su salario para saber la utilidad total*/
-    private int pmFaults; /*int para saber la cantidad de faltas del pm*/
-    private volatile int deadlineCount;
+    public Semaphore trafficLight;
+    public String state;/*Está trabajando o viendo anime*/
+    public float pocket = 0; /*Cantidad total de su salario para saber la utilidad total*/
+    public int faults = 0; /*int para saber la cantidad de faltas del pm*/
+    public int dayDuration;
     
-    public ProjectManager (int deadlineCount) {
+    public ProjectManager (int dayDuration, Semaphore trafficLight) {
         /*constructor*/
-        
-        this.pmSalary = 40; /*40$ la hora*/
-        this.totalPmSalary = 0;
-        this.pmFaults = 0;
-        this.deadlineCount = deadlineCount;
-    }
-    public void fortnight(){
-        this.totalPmSalary += this.pmSalary*24;
+        this.dayDuration = dayDuration;
+        this.trafficLight = trafficLight;
     }
     
-    /*Getters y setters*/
-
-    public String getPmState() {
-        return pmState;
-    }
-
-    public void setPmState(String pmState) {
-        this.pmState = pmState;
-    }
-
-    public float getPmSalary() {
-        return pmSalary;
-    }
-
-    public void setPmSalary(float pmSalary) {
-        this.pmSalary = pmSalary;
-    }
-
-    public float getTotalPmSalary() {
-        return totalPmSalary;
-    }
-
-    public void setTotalPmSalary(float totalPmSalary) {
-        this.totalPmSalary = totalPmSalary;
-    }
-
-    public int getPmFaults() {
-        return pmFaults;
-    }
-
-    public void setPmFaults(int pmFaults) {
-        this.pmFaults = pmFaults;
-    }
-
-    public void setDeadlineCount(int deadlineCount) {
-        this.deadlineCount = deadlineCount;
-    }
-    private int getDeadlineCount() {
-        throw new UnsupportedOperationException("Not supported yet."); 
-    }
-
-    private Object DeadlineCount() {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public void fortnight(){
+        this.pocket += 40*24;
     }
     
     /*Método para la jornada laboral del PM o trabaja o ver one piece*/
-    
-    public void pmWorkday() {
-    boolean working = true;
-    int numIterations = 69;
-    long minutesInterval = (long) 0.5; 
-    
-    for (int i = 0; i < numIterations; i++) {
-        if (working) {
-            setPmState("Trabajando");
-        } else {
-            setPmState("Viendo One Piece"); /*en setPmState debemos hacer una función que muestre en la interfaz estas palabras*/
-            if (getDirector().getDirectorState().equals("Vigilando al otaku")) { /*hay que hacer en la clase director un método que sea su estado*/
-                getDirector().giveFaultToPm(); /*un método en director que indique que da la falta al pm*/
-            }
-        }
-        working = false;
-        try {
-                sleep((long) minutesInterval);  
+    public void animeJunkie() {
+        int hourCount = 0;
+        int halfHour = hour()/2;
+        
+        while (hourCount < 16){
+            try {
+                this.state = "Viendo One Piece";
+                ProjectManager.sleep(halfHour);
+                this.state = "Trabajando";
+                ProjectManager.sleep(halfHour);
+                hourCount += 1;
             } catch (InterruptedException ex) {
                 Logger.getLogger(ProjectManager.class.getName()).log(Level.SEVERE, null, ex);
             }
-    }  
-    }
-    public void decreaseDeadline() { /*Método que actualiza el conteo del deadline, va decreciendo*/
+        }
+    }         
+    
+    public void work(){
         try {
-            trafficLight.acquire();
-            Thread.sleep(8); /* 8 horas  que el pm se toma para cambiando el contador con los días restantes para la entrega.*/
-            setDeadlineCount(getDeadlineCount()-1); /*va quitando 1 día al terminar las 8horas (o sea se acaban las 24 horas de trabajo)*/
-            String DeadlineCount = String.valueOf(DeadlineCount())+" días"; /*debemos conectar este value que aparezca en al interfaz*/
-            trafficLight.release();
+            animeJunkie();
+            this.trafficLight.acquire();
+            this.state = "Cambiando contador";
+            Thread.sleep(hour()*8); /* 8 horas  que el pm se toma para cambiando el contador con los días restantes para la entrega.*/
+            if (Studio.counter.daysLeft > 0) {
+                Studio.counter.daysLeft -= 1; /*va quitando 1 día al terminar las 8horas (o sea se acaban las 24 horas de trabajo)*/
+            } else {
+                Studio.counter.reset();
+            }
+                
+            System.out.println(Studio.counter.daysLeft + " días"); /*debemos conectar este value que aparezca en al interfaz*/
+            this.trafficLight.release();
         } catch (InterruptedException ex) {
             Logger.getLogger(ProjectManager.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    public int hour(){
+        return dayDuration/24;
+    }
+          
+    
+    
     @Override
     public void run(){
         while(true){
             // Se suma salario, trabaja, y pasa un día.
-            try {
-                decreaseDeadline();
-                fortnight();
-                pmWorkday();
-                System.out.println("chill");
-                sleep(Studio.time);
-                
-            } catch (InterruptedException e) {
-                Logger.getLogger(ProjectManager.class.getName()).log(Level.SEVERE, null, e);
-            }
+            fortnight();
+            work();
         }
     } 
 
