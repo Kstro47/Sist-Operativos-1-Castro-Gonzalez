@@ -74,7 +74,8 @@ public class MainUI extends javax.swing.JFrame {
             doblajesDisp.setText(Integer.toString(StudioCN.drive.dubs));
             plotwistsDisp.setText(Integer.toString(StudioCN.drive.plotTwists));
             pmStateLabel.setText(StudioCN.pm.state);
-            daysLeftLabel.setText(Integer.toString(Studio.counter.daysLeft));
+            diasFaltantes1.setText(Integer.toString(Studio.counter.daysLeft));
+            
         }
         
     }
@@ -155,7 +156,6 @@ public class MainUI extends javax.swing.JFrame {
         jLabel39 = new javax.swing.JLabel();
         plotwistersCont1 = new javax.swing.JSpinner();
         jLabel40 = new javax.swing.JLabel();
-        daysLeftLabel = new javax.swing.JLabel();
         pmStateLabel = new javax.swing.JLabel();
         directorStateLabel = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
@@ -165,7 +165,7 @@ public class MainUI extends javax.swing.JFrame {
         utilidadTotal = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        ganaciasTotal = new javax.swing.JLabel();
+        diasFaltantes1 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
@@ -175,6 +175,7 @@ public class MainUI extends javax.swing.JFrame {
         jLabel22 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
+        ganaciasTotal2 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel41 = new javax.swing.JLabel();
@@ -524,11 +525,6 @@ public class MainUI extends javax.swing.JFrame {
         jLabel40.setText("GANANCIA TOTAL = ");
         jPanel2.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 30, 200, 50));
 
-        daysLeftLabel.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
-        daysLeftLabel.setForeground(new java.awt.Color(0, 0, 0));
-        daysLeftLabel.setText("0");
-        jPanel2.add(daysLeftLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 0, 60, 50));
-
         pmStateLabel.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         pmStateLabel.setForeground(new java.awt.Color(0, 0, 0));
         pmStateLabel.setText("Trabajando/Viendo anime");
@@ -574,10 +570,10 @@ public class MainUI extends javax.swing.JFrame {
         jLabel18.setText("CAPÍTULOS LISTOS ESTÁNDAR =");
         jPanel2.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 310, 40));
 
-        ganaciasTotal.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
-        ganaciasTotal.setForeground(new java.awt.Color(0, 0, 0));
-        ganaciasTotal.setText("0");
-        jPanel2.add(ganaciasTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 30, 40, 50));
+        diasFaltantes1.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        diasFaltantes1.setForeground(new java.awt.Color(0, 0, 0));
+        diasFaltantes1.setText("0");
+        jPanel2.add(diasFaltantes1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 0, 40, 50));
 
         jLabel24.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         jLabel24.setForeground(new java.awt.Color(0, 0, 0));
@@ -623,6 +619,11 @@ public class MainUI extends javax.swing.JFrame {
         jLabel20.setForeground(new java.awt.Color(0, 0, 0));
         jLabel20.setText("FALTAS AL PM=");
         jPanel2.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 400, 110, 40));
+
+        ganaciasTotal2.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        ganaciasTotal2.setForeground(new java.awt.Color(0, 0, 0));
+        ganaciasTotal2.setText("0");
+        jPanel2.add(ganaciasTotal2, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 30, 40, 50));
 
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/CNSTUDIOfONDO33 (1).jpg"))); // NOI18N
         jLabel14.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -1070,13 +1071,9 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JLabel capitulosPlotListos;
     private javax.swing.JLabel capitulosPlotListos1;
     private javax.swing.JTextField dayDuration;
-    private javax.swing.JLabel daysLeftLabel;
     private javax.swing.JTextField designerQtty;
-<<<<<<< Updated upstream
     private javax.swing.JLabel diasFaltantes1;
     private javax.swing.JLabel diasFaltantes2;
-=======
->>>>>>> Stashed changes
     private javax.swing.JTextField dineroDescTotalPM;
     private javax.swing.JTextField dineroDescTotalPM1;
     private javax.swing.JLabel directorStateLabel;
@@ -1095,8 +1092,8 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JLabel escenariosDisp1;
     private javax.swing.JLabel escenariosMax;
     private javax.swing.JLabel escenariosMax1;
-    private javax.swing.JLabel ganaciasTotal;
     private javax.swing.JLabel ganaciasTotal1;
+    private javax.swing.JLabel ganaciasTotal2;
     private javax.swing.JSpinner guionCont1;
     private javax.swing.JSpinner guionCont2;
     private javax.swing.JLabel guionesDisp;
