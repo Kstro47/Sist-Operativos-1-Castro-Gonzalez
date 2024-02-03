@@ -74,7 +74,9 @@ public class MainUI extends javax.swing.JFrame {
             doblajesDisp.setText(Integer.toString(StudioCN.drive.dubs));
             plotwistsDisp.setText(Integer.toString(StudioCN.drive.plotTwists));
             pmStateLabel.setText(StudioCN.pm.state);
-            diasFaltantes1.setText(Integer.toString(Studio.counter.daysLeft));
+            directorStateLabel.setText(StudioCN.director.state);
+            daysLeftLabel.setText(Integer.toString(StudioCN.counter.daysLeft));
+            pmFaultsLabel.setText(Integer.toString(StudioCN.pm.faults));
             
         }
         
@@ -129,7 +131,6 @@ public class MainUI extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         capitulosPlotListos = new javax.swing.JLabel();
         dineroDescTotalPM = new javax.swing.JTextField();
-        cantFaltasPM = new javax.swing.JTextField();
         ensambladoresCont = new javax.swing.JSpinner();
         jLabel28 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
@@ -165,7 +166,7 @@ public class MainUI extends javax.swing.JFrame {
         utilidadTotal = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        diasFaltantes1 = new javax.swing.JLabel();
+        ganaciasTotal = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
@@ -175,7 +176,8 @@ public class MainUI extends javax.swing.JFrame {
         jLabel22 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
-        ganaciasTotal2 = new javax.swing.JLabel();
+        daysLeftLabel = new javax.swing.JLabel();
+        pmFaultsLabel = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel41 = new javax.swing.JLabel();
@@ -370,13 +372,6 @@ public class MainUI extends javax.swing.JFrame {
         jPanel2.add(capitulosPlotListos, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 40, 40, 40));
         jPanel2.add(dineroDescTotalPM, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 440, 30, -1));
 
-        cantFaltasPM.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cantFaltasPMActionPerformed(evt);
-            }
-        });
-        jPanel2.add(cantFaltasPM, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 400, 30, -1));
-
         ensambladoresCont.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
         ensambladoresCont.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -570,10 +565,10 @@ public class MainUI extends javax.swing.JFrame {
         jLabel18.setText("CAPÍTULOS LISTOS ESTÁNDAR =");
         jPanel2.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 310, 40));
 
-        diasFaltantes1.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
-        diasFaltantes1.setForeground(new java.awt.Color(0, 0, 0));
-        diasFaltantes1.setText("0");
-        jPanel2.add(diasFaltantes1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 0, 40, 50));
+        ganaciasTotal.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        ganaciasTotal.setForeground(new java.awt.Color(0, 0, 0));
+        ganaciasTotal.setText("0");
+        jPanel2.add(ganaciasTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 30, 40, 50));
 
         jLabel24.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         jLabel24.setForeground(new java.awt.Color(0, 0, 0));
@@ -620,10 +615,15 @@ public class MainUI extends javax.swing.JFrame {
         jLabel20.setText("FALTAS AL PM=");
         jPanel2.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 400, 110, 40));
 
-        ganaciasTotal2.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
-        ganaciasTotal2.setForeground(new java.awt.Color(0, 0, 0));
-        ganaciasTotal2.setText("0");
-        jPanel2.add(ganaciasTotal2, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 30, 40, 50));
+        daysLeftLabel.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        daysLeftLabel.setForeground(new java.awt.Color(0, 0, 0));
+        daysLeftLabel.setText("0");
+        jPanel2.add(daysLeftLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 0, 40, 50));
+
+        pmFaultsLabel.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        pmFaultsLabel.setForeground(new java.awt.Color(0, 0, 0));
+        pmFaultsLabel.setText("0");
+        jPanel2.add(pmFaultsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 390, 40, 60));
 
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/CNSTUDIOfONDO33 (1).jpg"))); // NOI18N
         jLabel14.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -964,10 +964,6 @@ public class MainUI extends javax.swing.JFrame {
         
     }//GEN-LAST:event_saveChangesActionPerformed
 
-    private void cantFaltasPMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cantFaltasPMActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cantFaltasPMActionPerformed
-
     private void ensambladoresContStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_ensambladoresContStateChanged
         
     }//GEN-LAST:event_ensambladoresContStateChanged
@@ -1066,13 +1062,12 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JSpinner animadoresCont2;
     private javax.swing.JTextField animatorQtty;
     private javax.swing.JTextField assemblersQtty;
-    private javax.swing.JTextField cantFaltasPM;
     private javax.swing.JTextField cantFaltasPM1;
     private javax.swing.JLabel capitulosPlotListos;
     private javax.swing.JLabel capitulosPlotListos1;
     private javax.swing.JTextField dayDuration;
+    private javax.swing.JLabel daysLeftLabel;
     private javax.swing.JTextField designerQtty;
-    private javax.swing.JLabel diasFaltantes1;
     private javax.swing.JLabel diasFaltantes2;
     private javax.swing.JTextField dineroDescTotalPM;
     private javax.swing.JTextField dineroDescTotalPM1;
@@ -1092,8 +1087,8 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JLabel escenariosDisp1;
     private javax.swing.JLabel escenariosMax;
     private javax.swing.JLabel escenariosMax1;
+    private javax.swing.JLabel ganaciasTotal;
     private javax.swing.JLabel ganaciasTotal1;
-    private javax.swing.JLabel ganaciasTotal2;
     private javax.swing.JSpinner guionCont1;
     private javax.swing.JSpinner guionCont2;
     private javax.swing.JLabel guionesDisp;
@@ -1177,6 +1172,7 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JLabel plotwistsDisp1;
     private javax.swing.JLabel plotwistsMax;
     private javax.swing.JLabel plotwistsMax1;
+    private javax.swing.JLabel pmFaultsLabel;
     private javax.swing.JLabel pmStateLabel;
     private javax.swing.JLabel pmStateLabel1;
     private javax.swing.JButton saveChanges;

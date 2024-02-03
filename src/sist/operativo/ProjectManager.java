@@ -21,9 +21,11 @@ public class ProjectManager extends Thread{
     public float pocket = 0; /*Cantidad total de su salario para saber la utilidad total*/
     public int faults = 0; /*int para saber la cantidad de faltas del pm*/
     public int dayDuration;
+    public Director director;
     
-    public ProjectManager (int dayDuration, Semaphore trafficLight) {
+    public ProjectManager (int dayDuration, Semaphore trafficLight, Director director) {
         /*constructor*/
+        this.director = director;
         this.dayDuration = dayDuration;
         this.trafficLight = trafficLight;
     }
@@ -41,6 +43,10 @@ public class ProjectManager extends Thread{
             try {
                 this.state = "Viendo One Piece";
                 ProjectManager.sleep(halfHour);
+                if ("Vigilando PM".equals(this.director.state)) {
+                    this.faults += 1;
+                    this.pocket -= 100;
+                }
                 this.state = "Trabajando";
                 ProjectManager.sleep(halfHour);
                 hourCount += 1;
@@ -58,10 +64,7 @@ public class ProjectManager extends Thread{
             Thread.sleep(hour()*8); /* 8 horas  que el pm se toma para cambiando el contador con los días restantes para la entrega.*/
             if (Studio.counter.daysLeft > 0) {
                 Studio.counter.daysLeft -= 1; /*va quitando 1 día al terminar las 8horas (o sea se acaban las 24 horas de trabajo)*/
-            } else {
-                Studio.counter.reset();
-            }
-                
+            }               
             System.out.println(Studio.counter.daysLeft + " días"); /*debemos conectar este value que aparezca en al interfaz*/
             this.trafficLight.release();
         } catch (InterruptedException ex) {

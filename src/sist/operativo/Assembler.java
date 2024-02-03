@@ -28,7 +28,7 @@ public class Assembler extends Thread{
         this.time = time;
     }
     
-    public void fortNight(){
+    public void fortnight(){
         this.pocket += 50*24;
     }
     
@@ -78,7 +78,6 @@ public class Assembler extends Thread{
         checkParts();
         int aux = 0;
         for (int i = 0; i < 5; i++) {
-            System.out.println(this.episodeParts[i]);
             if (this.episodeParts[i] == true){
                 aux += 1;
             }
@@ -193,7 +192,7 @@ public class Assembler extends Thread{
     public void run(){
         while (true){
             try{
-                fortNight();
+                fortnight();
                 int assemble = checkDrive();
                 if (assemble != 0){
                     System.out.println("working");

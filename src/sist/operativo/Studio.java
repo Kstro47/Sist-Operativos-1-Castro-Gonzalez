@@ -4,7 +4,6 @@
  */
 package sist.operativo;
 import java.util.concurrent.Semaphore;
-import javax.swing.JOptionPane;
 /**
  *
  * @author Emilio Jr
@@ -38,10 +37,13 @@ public class Studio {
     
     public ProjectManager pm;
     
+    public Director director;
+    
     public Studio( int dayDuration, int deadLine, int screenWriters, int designers, int animators, int dubsActor, int plotTwistsWriters, int assemblers, int type){
         Studio.dayDuration = dayDuration;
         Studio.type = type;
         Studio.counter = new Counter(deadLine);
+        
         // Se inicializa un array con todos los guionistas del studio y empiezan a trabajar con .start()
         this.screenWriters = new Worker[screenWriters];
         this.designers = new Worker[designers];
@@ -87,8 +89,12 @@ public class Studio {
             this.assemblers[i].start();
         }
         
-        this.pm = new ProjectManager(dayDuration, this.counterAccess);
+        this.director = new Director(dayDuration, this.counterAccess);
+        this.pm = new ProjectManager(dayDuration, this.counterAccess, this.director);
+        
+        this.director.start();
         this.pm.start();
+        
         
     }            
 }
