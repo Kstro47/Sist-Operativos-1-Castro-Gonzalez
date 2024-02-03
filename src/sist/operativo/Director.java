@@ -21,9 +21,11 @@ public class Director extends Thread{
     public int episodes; /*caps acumulados normales*/
     public int episodesPT;
     public int dayDuration;/*caps acumulados plotwist*/
+    public Studio studio;
     
-    public Director (int dayDuration, Semaphore trafficLight) {
+    public Director (Studio studio, int dayDuration, Semaphore trafficLight) {
         /*constructor*/
+        this.studio = studio;
         this.trafficLight = trafficLight;
         this.dayDuration = dayDuration;
         this.pocket = 0;
@@ -46,6 +48,16 @@ public class Director extends Thread{
         this.pocket += 60*24;
     }
     
+    public void sendEpisodes(){
+        if (Studio.type == 0) {
+            this.studio.sumEarnings(Studio.drive.episodes * 300000);
+            this.studio.sumEarnings(Studio.drive.episodesPT * 650000);
+        } else if (Studio.type == 1) {
+            this.studio.sumEarnings(Studio.drive.episodes * 450000);
+            this.studio.sumEarnings(Studio.drive.episodesPT * 500000);
+        }
+    }
+    
     public void work(){
         Random random = new Random();
         int randomNum = random.nextInt(25);
@@ -61,7 +73,11 @@ public class Director extends Thread{
             } else {
                 sendState();
                 Director.sleep(this.dayDuration);
-                Studio.counter.reset();
+                this.sendEpisodes();
+                Studio.drive.resetEpisodes();
+                this.trafficLight.acquire();
+                    Studio.counter.reset();
+                this.trafficLight.release();
             }
         } catch (InterruptedException ex) {
             Logger.getLogger(Director.class.getName()).log(Level.SEVERE, null, ex);

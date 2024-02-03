@@ -23,6 +23,11 @@ public class Drive {
         this.studio = studio;
     }
     
+    public void resetEpisodes(){
+        this.episodes = 0;
+        this.episodesPT = 0;
+    }
+    
     public boolean fullScripts(){
         return this.scripts > 24;
     }
@@ -46,30 +51,27 @@ public class Drive {
     public void saveScript(){
         // Guarda los guiones en el drive
             this.scripts += 1;
-            System.out.println("Se tienen " + this.scripts + "script");
     }
     
     public void saveScenario(){
         // Guarda los escenarios en el drive
             this.scenarios += 1;
-            System.out.println("Se tienen " + this.scenarios + "escenario");       
     }
     
     public void saveAnimation(){
         // Guarda las animaciones en el drive
-            this.animations += 1;
-            System.out.println("Se tienen " + this.animations + "animacion");       
+            this.animations += 1;      
+            System.out.println(this.animations);
     }
     
     public void saveDub(){
         // Guarda los doblajes en el drive
-            this.dubs += 5;
-            System.out.println("Se tienen " + this.dubs + "dub");      
+            this.dubs += 5;   
     }    
     
     public void savePlotTwist(){
         // Guarda los plotTwist en el drive
-            this.plotTwists += 1;
-            System.out.println("Se tienen " + this.plotTwists + "pt");      
+            this.plotTwists += 1;     
     }    
+
 }

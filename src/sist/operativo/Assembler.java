@@ -33,7 +33,7 @@ public class Assembler extends Thread{
     }
     
     public void checkParts(){
-        if (this.type == 0) {
+        if (this.type == 1) {
             if (this.drive.scripts > 1) {               
                 this.episodeParts[0] = true;
             }
@@ -49,16 +49,17 @@ public class Assembler extends Thread{
             if (this.counter > 4) {
                 if (this.drive.plotTwists > 1) {
                     this.episodeParts[4] = true;
+                    this.counter = 0;
                 }
             }
-        } else {
+        } else if (this.type == 0) {
             if (this.drive.scripts > 0) {                
                 this.episodeParts[0] = true;
             }
             if (this.drive.scenarios > 1){                
                 this.episodeParts[1] = true;     
             }
-            if (this.drive.animations > 5){                
+            if (this.drive.animations > 5){    
                 this.episodeParts[2] = true;     
             }
             if (this.drive.dubs > 4){               
@@ -77,30 +78,13 @@ public class Assembler extends Thread{
     public int checkIfAssemble(){
         checkParts();
         int aux = 0;
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 4; i++) {
             if (this.episodeParts[i] == true){
                 aux += 1;
             }
         }
-        if (aux == 4){
-            if (this.type == 0){
-                this.drive.scripts -= 2;
-                this.drive.scenarios -= 1;
-                this.drive.animations -= 4;
-                this.drive.dubs -= 4;
-            } else {
-                this.drive.scripts -= 1;
-                this.drive.scenarios -= 2;
-                this.drive.animations -= 6;
-                this.drive.dubs -= 5;
-            }
-            for (int i = 0; i < this.episodeParts.length; i++) {
-                this.episodeParts[i] = false;
-            }
-            return 1;
-        } 
-        else if (aux == 5){
-            if (this.type == 0){
+        if (aux == 4 && this.episodeParts[4] == true){
+            if (this.type == 1){
                 this.drive.scripts -= 2;
                 this.drive.scenarios -= 1;
                 this.drive.animations -= 4;
@@ -118,7 +102,24 @@ public class Assembler extends Thread{
             for (int i = 0; i < this.episodeParts.length; i++) {
                 this.episodeParts[i] = false;
             }
-            return 2;
+            return 2; 
+        } 
+        else if (aux == 4){
+            if (this.type == 1){
+                this.drive.scripts -= 2;
+                this.drive.scenarios -= 1;
+                this.drive.animations -= 4;
+                this.drive.dubs -= 4;
+            } else {
+                this.drive.scripts -= 1;
+                this.drive.scenarios -= 2;               
+                this.drive.animations -= 6;
+                this.drive.dubs -= 5;
+            }
+            for (int i = 0; i < this.episodeParts.length; i++) {
+                this.episodeParts[i] = false;
+            }
+            return 1;
         }
         for (int i = 0; i < this.episodeParts.length; i++) {
             this.episodeParts[i] = false;
@@ -153,7 +154,6 @@ public class Assembler extends Thread{
                             this.trafficLight.acquire();
                             this.drive.episodes += 1;
                             this.counter += 1;
-                            System.out.println("lo hice ");
                             this.trafficLight.release();
                             this.daysWorked = 0;
                             working = false;
@@ -166,7 +166,6 @@ public class Assembler extends Thread{
                             this.trafficLight.acquire();
                             this.drive.episodesPT += 1;
                             this.counter += 1;
-                            System.out.println("lo hice pt");
                             this.trafficLight.release();
                             this.daysWorked = 0;
                             working = false;
@@ -195,9 +194,7 @@ public class Assembler extends Thread{
                 fortnight();
                 int assemble = checkDrive();
                 if (assemble != 0){
-                    System.out.println("working");
                     work(assemble);
-                    System.out.println("ya trabaje");
                 }
                 sleep(this.time);
             } catch (InterruptedException e) {

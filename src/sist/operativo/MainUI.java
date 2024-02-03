@@ -77,7 +77,10 @@ public class MainUI extends javax.swing.JFrame {
             directorStateLabel.setText(StudioCN.director.state);
             daysLeftLabel.setText(Integer.toString(StudioCN.counter.daysLeft));
             pmFaultsLabel.setText(Integer.toString(StudioCN.pm.faults));
-            
+            completeEpisodes1.setText(Integer.toString(StudioCN.drive.episodes));
+            completePTEpisodes1.setText(Integer.toString(StudioCN.drive.episodesPT));
+            totalEarningsLabel.setText(Integer.toString(StudioCN.episodeEarnings));
+            pmMoneyLost1.setText(Integer.toString(StudioCN.pm.pocketLost));
         }
         
     }
@@ -129,8 +132,7 @@ public class MainUI extends javax.swing.JFrame {
         saveChanges = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        capitulosPlotListos = new javax.swing.JLabel();
-        dineroDescTotalPM = new javax.swing.JTextField();
+        completePTEpisodes1 = new javax.swing.JLabel();
         ensambladoresCont = new javax.swing.JSpinner();
         jLabel28 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
@@ -162,11 +164,11 @@ public class MainUI extends javax.swing.JFrame {
         jLabel19 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         guionesMax = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
+        completeEpisodes1 = new javax.swing.JLabel();
         utilidadTotal = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        ganaciasTotal = new javax.swing.JLabel();
+        totalEarningsLabel = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
@@ -178,6 +180,7 @@ public class MainUI extends javax.swing.JFrame {
         jLabel20 = new javax.swing.JLabel();
         daysLeftLabel = new javax.swing.JLabel();
         pmFaultsLabel = new javax.swing.JLabel();
+        pmMoneyLost1 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel41 = new javax.swing.JLabel();
@@ -366,11 +369,10 @@ public class MainUI extends javax.swing.JFrame {
         jPanel2.setOpaque(false);
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        capitulosPlotListos.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
-        capitulosPlotListos.setForeground(new java.awt.Color(0, 0, 0));
-        capitulosPlotListos.setText("0");
-        jPanel2.add(capitulosPlotListos, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 40, 40, 40));
-        jPanel2.add(dineroDescTotalPM, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 440, 30, -1));
+        completePTEpisodes1.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        completePTEpisodes1.setForeground(new java.awt.Color(0, 0, 0));
+        completePTEpisodes1.setText("0");
+        jPanel2.add(completePTEpisodes1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 50, 40, 40));
 
         ensambladoresCont.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
         ensambladoresCont.addChangeListener(new javax.swing.event.ChangeListener() {
@@ -378,7 +380,7 @@ public class MainUI extends javax.swing.JFrame {
                 ensambladoresContStateChanged(evt);
             }
         });
-        jPanel2.add(ensambladoresCont, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 310, 40, 20));
+        jPanel2.add(ensambladoresCont, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 310, 40, 20));
 
         jLabel28.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         jLabel28.setForeground(new java.awt.Color(0, 0, 0));
@@ -453,7 +455,7 @@ public class MainUI extends javax.swing.JFrame {
         jLabel35.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         jLabel35.setForeground(new java.awt.Color(0, 0, 0));
         jLabel35.setText("Ensambladores");
-        jPanel2.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 300, 110, 40));
+        jPanel2.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 300, 110, 40));
 
         guionCont1.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
         guionCont1.addChangeListener(new javax.swing.event.ChangeListener() {
@@ -517,8 +519,8 @@ public class MainUI extends javax.swing.JFrame {
 
         jLabel40.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         jLabel40.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel40.setText("GANANCIA TOTAL = ");
-        jPanel2.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 30, 200, 50));
+        jLabel40.setText("GANANCIA EN BRUTO = ");
+        jPanel2.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 30, 240, 50));
 
         pmStateLabel.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         pmStateLabel.setForeground(new java.awt.Color(0, 0, 0));
@@ -545,30 +547,30 @@ public class MainUI extends javax.swing.JFrame {
         guionesMax.setText("0");
         jPanel2.add(guionesMax, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 150, 20, 40));
 
-        jLabel21.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
-        jLabel21.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel21.setText("0");
-        jPanel2.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 0, 160, 40));
+        completeEpisodes1.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        completeEpisodes1.setForeground(new java.awt.Color(0, 0, 0));
+        completeEpisodes1.setText("0");
+        jPanel2.add(completeEpisodes1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 20, 50, 40));
 
         utilidadTotal.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         utilidadTotal.setForeground(new java.awt.Color(0, 0, 0));
         utilidadTotal.setText("0");
-        jPanel2.add(utilidadTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 60, 30, 50));
+        jPanel2.add(utilidadTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 60, 230, 50));
 
         jLabel23.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         jLabel23.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel23.setText("TRABAJADORES y PARTES");
-        jPanel2.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 310, 40));
+        jLabel23.setText("PARTES y TRABAJADORES ");
+        jPanel2.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 310, 40));
 
         jLabel18.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(0, 0, 0));
         jLabel18.setText("CAPÍTULOS LISTOS ESTÁNDAR =");
-        jPanel2.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 310, 40));
+        jPanel2.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 310, 40));
 
-        ganaciasTotal.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
-        ganaciasTotal.setForeground(new java.awt.Color(0, 0, 0));
-        ganaciasTotal.setText("0");
-        jPanel2.add(ganaciasTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 30, 40, 50));
+        totalEarningsLabel.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        totalEarningsLabel.setForeground(new java.awt.Color(0, 0, 0));
+        totalEarningsLabel.setText("0");
+        jPanel2.add(totalEarningsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 30, 190, 50));
 
         jLabel24.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         jLabel24.setForeground(new java.awt.Color(0, 0, 0));
@@ -583,12 +585,12 @@ public class MainUI extends javax.swing.JFrame {
         jLabel26.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         jLabel26.setForeground(new java.awt.Color(0, 0, 0));
         jLabel26.setText("CAPÍTULOS LISTOS PLOTWIST =");
-        jPanel2.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 310, 40));
+        jPanel2.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 310, 40));
 
         jLabel27.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         jLabel27.setForeground(new java.awt.Color(0, 0, 0));
         jLabel27.setText("Drive");
-        jPanel2.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 80, 40));
+        jPanel2.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 80, 50));
 
         escenariosMax.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         escenariosMax.setForeground(new java.awt.Color(0, 0, 0));
@@ -624,6 +626,11 @@ public class MainUI extends javax.swing.JFrame {
         pmFaultsLabel.setForeground(new java.awt.Color(0, 0, 0));
         pmFaultsLabel.setText("0");
         jPanel2.add(pmFaultsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 390, 40, 60));
+
+        pmMoneyLost1.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        pmMoneyLost1.setForeground(new java.awt.Color(0, 0, 0));
+        pmMoneyLost1.setText("0");
+        jPanel2.add(pmMoneyLost1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 420, 160, 60));
 
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/CNSTUDIOfONDO33 (1).jpg"))); // NOI18N
         jLabel14.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -1063,13 +1070,13 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JTextField animatorQtty;
     private javax.swing.JTextField assemblersQtty;
     private javax.swing.JTextField cantFaltasPM1;
-    private javax.swing.JLabel capitulosPlotListos;
     private javax.swing.JLabel capitulosPlotListos1;
+    private javax.swing.JLabel completeEpisodes1;
+    private javax.swing.JLabel completePTEpisodes1;
     private javax.swing.JTextField dayDuration;
     private javax.swing.JLabel daysLeftLabel;
     private javax.swing.JTextField designerQtty;
     private javax.swing.JLabel diasFaltantes2;
-    private javax.swing.JTextField dineroDescTotalPM;
     private javax.swing.JTextField dineroDescTotalPM1;
     private javax.swing.JLabel directorStateLabel;
     private javax.swing.JLabel directorStateLabel1;
@@ -1087,7 +1094,6 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JLabel escenariosDisp1;
     private javax.swing.JLabel escenariosMax;
     private javax.swing.JLabel escenariosMax1;
-    private javax.swing.JLabel ganaciasTotal;
     private javax.swing.JLabel ganaciasTotal1;
     private javax.swing.JSpinner guionCont1;
     private javax.swing.JSpinner guionCont2;
@@ -1107,7 +1113,6 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
@@ -1173,11 +1178,13 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JLabel plotwistsMax;
     private javax.swing.JLabel plotwistsMax1;
     private javax.swing.JLabel pmFaultsLabel;
+    private javax.swing.JLabel pmMoneyLost1;
     private javax.swing.JLabel pmStateLabel;
     private javax.swing.JLabel pmStateLabel1;
     private javax.swing.JButton saveChanges;
     private javax.swing.JTextField screenWriterQtty;
     private javax.swing.JTextField shippingDeadline;
+    private javax.swing.JLabel totalEarningsLabel;
     private javax.swing.JLabel utilidadTotal;
     private javax.swing.JLabel utilidadTotal1;
     private javax.swing.JTextField voiceActorsQtty;

@@ -12,6 +12,9 @@ public class Studio {
     public static int dayDuration;    
     public static Counter counter;
     
+    public int costs = 0;
+    public int episodeEarnings = 0;
+    public int totalEarnings = 0;
     
     public static int type;
     
@@ -25,7 +28,7 @@ public class Studio {
     
     public Semaphore counterAccess = new Semaphore(1);
     
-    public Drive drive = new Drive(this);
+    public static Drive drive;
     
     public Worker[] screenWriters;
     public Worker[] designers;
@@ -43,6 +46,7 @@ public class Studio {
         Studio.dayDuration = dayDuration;
         Studio.type = type;
         Studio.counter = new Counter(deadLine);
+        Studio.drive = new Drive(this);
         
         // Se inicializa un array con todos los guionistas del studio y empiezan a trabajar con .start()
         this.screenWriters = new Worker[screenWriters];
@@ -89,12 +93,14 @@ public class Studio {
             this.assemblers[i].start();
         }
         
-        this.director = new Director(dayDuration, this.counterAccess);
+        this.director = new Director(this, dayDuration, this.counterAccess);
         this.pm = new ProjectManager(dayDuration, this.counterAccess, this.director);
         
         this.director.start();
         this.pm.start();
-        
-        
-    }            
+    }     
+    
+    public void sumEarnings(int num){
+        this.episodeEarnings += num;
+    }
 }

@@ -16,12 +16,12 @@ import java.util.logging.Logger;
 // Deben haber un total de 19 trabajadores
 
 public class Worker extends Thread {
-    private int salary;
-    private int type;
-    private int pocket = 0;
-    private int daysWorked = 0;
-    private Semaphore trafficLight;
-    private Drive drive;
+    public int salary;
+    public int type;
+    public int pocket = 0;
+    public int daysWorked = 0;
+    public Semaphore trafficLight;
+    public Drive drive;
     
     public Worker(int type, Drive drive, Semaphore trafficLight){
         this.type = type;
@@ -154,7 +154,6 @@ public class Worker extends Thread {
             try {
                 fortnight();
                 work();
-                System.out.println("chill");
                 sleep(Studio.dayDuration);
             } catch (InterruptedException e) {
                 Logger.getLogger(Worker.class.getName()).log(Level.SEVERE, null, e);

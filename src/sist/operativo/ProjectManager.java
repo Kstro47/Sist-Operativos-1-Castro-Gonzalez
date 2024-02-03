@@ -18,7 +18,8 @@ import java.util.logging.Logger;
 public class ProjectManager extends Thread{
     public Semaphore trafficLight;
     public String state;/*Está trabajando o viendo anime*/
-    public float pocket = 0; /*Cantidad total de su salario para saber la utilidad total*/
+    public int pocket = 0; /*Cantidad total de su salario para saber la utilidad total*/
+    public int pocketLost = 0;
     public int faults = 0; /*int para saber la cantidad de faltas del pm*/
     public int dayDuration;
     public Director director;
@@ -46,6 +47,7 @@ public class ProjectManager extends Thread{
                 if ("Vigilando PM".equals(this.director.state)) {
                     this.faults += 1;
                     this.pocket -= 100;
+                    this.pocketLost += 100;
                 }
                 this.state = "Trabajando";
                 ProjectManager.sleep(halfHour);
