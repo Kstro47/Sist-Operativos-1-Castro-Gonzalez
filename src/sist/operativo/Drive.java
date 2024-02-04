@@ -61,7 +61,6 @@ public class Drive {
     public void saveAnimation(){
         // Guarda las animaciones en el drive
             this.animations += 1;      
-            System.out.println(this.animations);
     }
     
     public void saveDub(){

@@ -68,6 +68,7 @@ public class Assembler extends Thread{
             if (this.counter > 2) {
                 if (this.drive.plotTwists > 0) {           
                     this.episodeParts[4] = true;
+                    System.out.println("ploti");
                     this.counter = 0;
                 }
             }
@@ -90,14 +91,12 @@ public class Assembler extends Thread{
                 this.drive.animations -= 4;
                 this.drive.dubs -= 4;
                 this.drive.plotTwists -= 2;   
-                this.counter = 0;
             } else {
                 this.drive.scripts -= 1;
                 this.drive.scenarios -= 2;
                 this.drive.animations -= 6;
                 this.drive.dubs -= 5;
                 this.drive.plotTwists -= 1;
-                this.counter = 0;
             }
             for (int i = 0; i < this.episodeParts.length; i++) {
                 this.episodeParts[i] = false;
