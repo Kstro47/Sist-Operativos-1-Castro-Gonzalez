@@ -489,7 +489,7 @@ public class MainUI extends javax.swing.JFrame {
                 guionCont1StateChanged(evt);
             }
         });
-        jPanel2.add(guionCont1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 160, 40, 20));
+        jPanel2.add(guionCont1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 160, 40, 20));
 
         jLabel36.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         jLabel36.setForeground(new java.awt.Color(0, 0, 0));
@@ -681,12 +681,12 @@ public class MainUI extends javax.swing.JFrame {
         jLabel41.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         jLabel41.setForeground(new java.awt.Color(0, 0, 0));
         jLabel41.setText("CAPÍTULOS LISTOS ESTÁNDAR =");
-        jPanel3.add(jLabel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 310, 40));
+        jPanel3.add(jLabel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 310, 40));
 
         completeEpisodes1NK.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         completeEpisodes1NK.setForeground(new java.awt.Color(0, 0, 0));
         completeEpisodes1NK.setText("0");
-        jPanel3.add(completeEpisodes1NK, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 0, 160, 40));
+        jPanel3.add(completeEpisodes1NK, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 20, 160, 40));
 
         jLabel43.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         jLabel43.setForeground(new java.awt.Color(0, 0, 0));
@@ -721,22 +721,22 @@ public class MainUI extends javax.swing.JFrame {
         jLabel46.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         jLabel46.setForeground(new java.awt.Color(0, 0, 0));
         jLabel46.setText("CAPÍTULOS LISTOS PLOTWIST =");
-        jPanel3.add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 310, 40));
+        jPanel3.add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 310, 40));
 
         completePTEpisodes1NK.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         completePTEpisodes1NK.setForeground(new java.awt.Color(0, 0, 0));
         completePTEpisodes1NK.setText("0");
-        jPanel3.add(completePTEpisodes1NK, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 40, 40, 40));
+        jPanel3.add(completePTEpisodes1NK, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 50, 40, 40));
 
         jLabel47.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         jLabel47.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel47.setText("TRABAJADORES y PARTES");
-        jPanel3.add(jLabel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 310, 40));
+        jLabel47.setText("PARTES y TRABAJADORES");
+        jPanel3.add(jLabel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 310, 40));
 
         jLabel48.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         jLabel48.setForeground(new java.awt.Color(0, 0, 0));
         jLabel48.setText("Drive");
-        jPanel3.add(jLabel48, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 80, 40));
+        jPanel3.add(jLabel48, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 80, 50));
 
         jLabel49.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         jLabel49.setForeground(new java.awt.Color(0, 0, 0));
@@ -826,7 +826,7 @@ public class MainUI extends javax.swing.JFrame {
         jLabel56.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         jLabel56.setForeground(new java.awt.Color(0, 0, 0));
         jLabel56.setText("Ensambladores");
-        jPanel3.add(jLabel56, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 300, 110, 40));
+        jPanel3.add(jLabel56, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 300, 110, 40));
 
         ensambladoresCont1.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
         ensambladoresCont1.addChangeListener(new javax.swing.event.ChangeListener() {
@@ -834,7 +834,7 @@ public class MainUI extends javax.swing.JFrame {
                 ensambladoresCont1StateChanged(evt);
             }
         });
-        jPanel3.add(ensambladoresCont1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 310, 40, 20));
+        jPanel3.add(ensambladoresCont1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 310, 40, 20));
 
         jLabel57.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         jLabel57.setForeground(new java.awt.Color(0, 0, 0));
@@ -899,7 +899,7 @@ public class MainUI extends javax.swing.JFrame {
                 guionCont2StateChanged(evt);
             }
         });
-        jPanel3.add(guionCont2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 160, 40, 20));
+        jPanel3.add(guionCont2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 160, 40, 20));
 
         jLabel62.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         jLabel62.setForeground(new java.awt.Color(0, 0, 0));
@@ -931,15 +931,15 @@ public class MainUI extends javax.swing.JFrame {
         jLabel65.setText("DINERO PM TOTAL DESCONTADO =");
         jPanel3.add(jLabel65, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 430, 240, 40));
 
-        pmFaultsLabelNK.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        pmFaultsLabelNK.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         pmFaultsLabelNK.setForeground(new java.awt.Color(0, 0, 0));
         pmFaultsLabelNK.setText("0");
-        jPanel3.add(pmFaultsLabelNK, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 410, 60, -1));
+        jPanel3.add(pmFaultsLabelNK, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 406, 60, 30));
 
-        pmMoneyLost1NK.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        pmMoneyLost1NK.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         pmMoneyLost1NK.setForeground(new java.awt.Color(0, 0, 0));
         pmMoneyLost1NK.setText("0");
-        jPanel3.add(pmMoneyLost1NK, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 440, 110, -1));
+        jPanel3.add(pmMoneyLost1NK, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 430, 110, 40));
 
         jLabel66.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         jLabel66.setForeground(new java.awt.Color(0, 0, 0));
