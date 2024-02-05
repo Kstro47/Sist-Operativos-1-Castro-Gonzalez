@@ -50,11 +50,11 @@ public class Director extends Thread{
     
     public void sendEpisodes(){
         if (Studio.type == 0) {
-            this.studio.sumEarnings(Studio.drive.episodes * 300000);
-            this.studio.sumEarnings(Studio.drive.episodesPT * 650000);
+            this.studio.sumEarnings(this.studio.drive.episodes * 300000);
+            this.studio.sumEarnings(this.studio.drive.episodesPT * 650000);
         } else if (Studio.type == 1) {
-            this.studio.sumEarnings(Studio.drive.episodes * 450000);
-            this.studio.sumEarnings(Studio.drive.episodesPT * 500000);
+            this.studio.sumEarnings(this.studio.drive.episodes * 450000);
+            this.studio.sumEarnings(this.studio.drive.episodesPT * 500000);
         }
     }
     
@@ -63,7 +63,7 @@ public class Director extends Thread{
         int randomNum = random.nextInt(25);
 
         try {    
-            if (Studio.counter.daysLeft > 0) {          
+            if (this.studio.counter.daysLeft > 0) {          
                 workState();
                 Director.sleep(hour()*randomNum);
                 watchState();
@@ -74,9 +74,9 @@ public class Director extends Thread{
                 sendState();
                 Director.sleep(this.dayDuration);
                 this.sendEpisodes();
-                Studio.drive.resetEpisodes();
+                this.studio.drive.resetEpisodes();
                 this.trafficLight.acquire();
-                    Studio.counter.reset();
+                    this.studio.counter.reset();
                 this.trafficLight.release();
             }
         } catch (InterruptedException ex) {

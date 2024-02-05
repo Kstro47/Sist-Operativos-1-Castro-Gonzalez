@@ -10,9 +10,9 @@ import java.util.concurrent.Semaphore;
  */
 public class Studio {
     public static int dayDuration;    
-    public static Counter counter;
+    public Counter counter;
     
-    public int costs = 0;
+    public int operativeCosts = 0;
     public int episodeEarnings = 0;
     public int totalEarnings = 0;
     
@@ -28,7 +28,7 @@ public class Studio {
     
     public Semaphore counterAccess = new Semaphore(1);
     
-    public static Drive drive;
+    public Drive drive;
     
     public Worker[] screenWriters;
     public Worker[] designers;
@@ -45,8 +45,8 @@ public class Studio {
     public Studio( int dayDuration, int deadLine, int screenWriters, int designers, int animators, int dubsActor, int plotTwistsWriters, int assemblers, int type){
         Studio.dayDuration = dayDuration;
         Studio.type = type;
-        Studio.counter = new Counter(deadLine);
-        Studio.drive = new Drive(this);
+        this.counter = new Counter(deadLine);
+        this.drive = new Drive(this);
         
         // Se inicializa un array con todos los guionistas del studio y empiezan a trabajar con .start()
         this.screenWriters = new Worker[screenWriters];
@@ -94,7 +94,7 @@ public class Studio {
         }
         
         this.director = new Director(this, dayDuration, this.counterAccess);
-        this.pm = new ProjectManager(dayDuration, this.counterAccess, this.director);
+        this.pm = new ProjectManager(dayDuration, this.counterAccess, this.director, this);
         
         this.director.start();
         this.pm.start();
@@ -102,5 +102,43 @@ public class Studio {
     
     public void sumEarnings(int num){
         this.episodeEarnings += num;
+        this.sumUtility();
+        this.sumTotalEarnings();
+    }
+    
+    public void sumUtility(){
+        int salaryCost = 0;
+        for (Worker screenWriter : this.screenWriters) {
+            salaryCost += screenWriter.pocket;
+        }
+        
+        for (Worker designers : this.designers) {
+            salaryCost += designers.pocket;
+        }
+        
+        for (Worker animators : this.animators) {
+            salaryCost += animators.pocket;
+        }
+        
+        for (Worker dubsActor : this.dubsActor) {
+            salaryCost += dubsActor.pocket;
+        }
+        
+        for (Worker plotTwistsWriters : this.plotTwistsWriters) {
+            salaryCost += plotTwistsWriters.pocket;
+        }
+        
+        for (Assembler assemblers : this.assemblers) {
+            salaryCost += assemblers.pocket;
+        }
+        
+        salaryCost += this.director.pocket;
+        salaryCost += this.pm.pocket;
+        
+        this.operativeCosts = salaryCost;
+    }
+    
+    public void sumTotalEarnings(){
+        this.totalEarnings = this.episodeEarnings - this.operativeCosts;
     }
 }

@@ -68,7 +68,6 @@ public class Assembler extends Thread{
             if (this.counter > 2) {
                 if (this.drive.plotTwists > 0) {           
                     this.episodeParts[4] = true;
-                    System.out.println("ploti");
                     this.counter = 0;
                 }
             }

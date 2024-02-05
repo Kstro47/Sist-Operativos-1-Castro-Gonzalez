@@ -23,12 +23,14 @@ public class ProjectManager extends Thread{
     public int faults = 0; /*int para saber la cantidad de faltas del pm*/
     public int dayDuration;
     public Director director;
+    public Studio studio;
     
-    public ProjectManager (int dayDuration, Semaphore trafficLight, Director director) {
+    public ProjectManager (int dayDuration, Semaphore trafficLight, Director director, Studio studio) {
         /*constructor*/
         this.director = director;
         this.dayDuration = dayDuration;
         this.trafficLight = trafficLight;
+        this.studio = studio;
     }
     
     public void fortnight(){
@@ -64,10 +66,9 @@ public class ProjectManager extends Thread{
             this.trafficLight.acquire();
             this.state = "Cambiando contador";
             Thread.sleep(hour()*8); /* 8 horas  que el pm se toma para cambiando el contador con los días restantes para la entrega.*/
-            if (Studio.counter.daysLeft > 0) {
-                Studio.counter.daysLeft -= 1; /*va quitando 1 día al terminar las 8horas (o sea se acaban las 24 horas de trabajo)*/
+            if (this.studio.counter.daysLeft > 0) {
+                this.studio.counter.daysLeft -= 1; /*va quitando 1 día al terminar las 8horas (o sea se acaban las 24 horas de trabajo)*/
             }               
-            System.out.println(Studio.counter.daysLeft + " días"); /*debemos conectar este value que aparezca en al interfaz*/
             this.trafficLight.release();
         } catch (InterruptedException ex) {
             Logger.getLogger(ProjectManager.class.getName()).log(Level.SEVERE, null, ex);

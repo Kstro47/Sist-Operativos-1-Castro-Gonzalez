@@ -66,35 +66,40 @@ public class MainUI extends javax.swing.JFrame {
                 }
         }
         
-        Studio StudioCN = new Studio(Integer.parseInt(this.parametros[0])*1000, Integer.parseInt(this.parametros[1]), Integer.parseInt(this.parametros[2]), Integer.parseInt(this.parametros[3]), Integer.parseInt(this.parametros[4]), Integer.parseInt(this.parametros[5]), Integer.parseInt(this.parametros[6]), Integer.parseInt(this.parametros[7]), 0);
-        Studio StudioNK = new Studio(Integer.parseInt(this.parametros[0])*1000, Integer.parseInt(this.parametros[1]), Integer.parseInt(this.parametros[2]), Integer.parseInt(this.parametros[3]), Integer.parseInt(this.parametros[4]), Integer.parseInt(this.parametros[5]), Integer.parseInt(this.parametros[6]), Integer.parseInt(this.parametros[7]), 1);
+        this.StudioCN = new Studio(Integer.parseInt(this.parametros[0])*1000, Integer.parseInt(this.parametros[1]), Integer.parseInt(this.parametros[2]), Integer.parseInt(this.parametros[3]), Integer.parseInt(this.parametros[4]), Integer.parseInt(this.parametros[5]), Integer.parseInt(this.parametros[6]), Integer.parseInt(this.parametros[7]), 0);
+        this.StudioNK = new Studio(Integer.parseInt(this.parametros[0])*1000, Integer.parseInt(this.parametros[1]), Integer.parseInt(this.parametros[2]), Integer.parseInt(this.parametros[3]), Integer.parseInt(this.parametros[4]), Integer.parseInt(this.parametros[5]), Integer.parseInt(this.parametros[6]), Integer.parseInt(this.parametros[7]), 1);
+        
         while (true){
-            guionesDisp.setText(Integer.toString(StudioCN.drive.scripts));
-            escenariosDisp.setText(Integer.toString(StudioCN.drive.scenarios));
-            animacionesDisp.setText(Integer.toString(StudioCN.drive.animations));
-            doblajesDisp.setText(Integer.toString(StudioCN.drive.dubs));
-            plotwistsDisp.setText(Integer.toString(StudioCN.drive.plotTwists));
-            pmStateLabel.setText(StudioCN.pm.state);
-            directorStateLabel.setText(StudioCN.director.state);
-            daysLeftLabel.setText(Integer.toString(StudioCN.counter.daysLeft));
-            pmFaultsLabel.setText(Integer.toString(StudioCN.pm.faults));
-            completeEpisodes1.setText(Integer.toString(StudioCN.drive.episodes));
-            completePTEpisodes1.setText(Integer.toString(StudioCN.drive.episodesPT));
-            totalEarningsLabel.setText(Integer.toString(StudioCN.episodeEarnings));
-            pmMoneyLost1.setText(Integer.toString(StudioCN.pm.pocketLost));
-            guionesDispNK.setText(Integer.toString(StudioNK.drive.scripts));
-            escenariosDispNK.setText(Integer.toString(StudioNK.drive.scenarios));
-            animacionesDispNK.setText(Integer.toString(StudioNK.drive.animations));
-            doblajesDispNK.setText(Integer.toString(StudioNK.drive.dubs));
-            plotwistsDispNK.setText(Integer.toString(StudioNK.drive.plotTwists));
-            pmStateLabelNK.setText(StudioNK.pm.state);
-            directorStateLabelNK.setText(StudioNK.director.state);
-            daysLeftLabelNK.setText(Integer.toString(StudioNK.counter.daysLeft));
-            pmFaultsLabelNK.setText(Integer.toString(StudioNK.pm.faults));
-            completeEpisodes1NK.setText(Integer.toString(StudioNK.drive.episodes));
-            completePTEpisodes1NK.setText(Integer.toString(StudioNK.drive.episodesPT));
-            totalEarningsLabelNK.setText(Integer.toString(StudioNK.episodeEarnings));
-            pmMoneyLost1NK.setText(Integer.toString(StudioNK.pm.pocketLost));
+            guionesDisp.setText(Integer.toString(this.StudioCN.drive.scripts));
+            escenariosDisp.setText(Integer.toString(this.StudioCN.drive.scenarios));
+            animacionesDisp.setText(Integer.toString(this.StudioCN.drive.animations));
+            doblajesDisp.setText(Integer.toString(this.StudioCN.drive.dubs));
+            plotwistsDisp.setText(Integer.toString(this.StudioCN.drive.plotTwists));
+            pmStateLabel.setText(this.StudioCN.pm.state);
+            directorStateLabel.setText(this.StudioCN.director.state);
+            daysLeftLabel.setText(Integer.toString(this.StudioCN.counter.daysLeft));
+            pmFaultsLabel.setText(Integer.toString(this.StudioCN.pm.faults));
+            completeEpisodes1.setText(Integer.toString(this.StudioCN.drive.episodes));
+            completePTEpisodes1.setText(Integer.toString(this.StudioCN.drive.episodesPT));
+            totalEarningsLabel.setText(Integer.toString(this.StudioCN.episodeEarnings));
+            pmMoneyLost1.setText(Integer.toString(this.StudioCN.pm.pocketLost));
+            utilidadTotal.setText(Integer.toString(this.StudioCN.totalEarnings));
+            costos.setText(Integer.toString(this.StudioCN.operativeCosts));
+            guionesDispNK.setText(Integer.toString(this.StudioNK.drive.scripts));
+            escenariosDispNK.setText(Integer.toString(this.StudioNK.drive.scenarios));
+            animacionesDispNK.setText(Integer.toString(this.StudioNK.drive.animations));
+            doblajesDispNK.setText(Integer.toString(this.StudioNK.drive.dubs));
+            plotwistsDispNK.setText(Integer.toString(this.StudioNK.drive.plotTwists));
+            pmStateLabelNK.setText(this.StudioNK.pm.state);
+            directorStateLabelNK.setText(this.StudioNK.director.state);
+            daysLeftLabelNK.setText(Integer.toString(this.StudioNK.counter.daysLeft));
+            pmFaultsLabelNK.setText(Integer.toString(this.StudioNK.pm.faults));
+            completeEpisodes1NK.setText(Integer.toString(this.StudioNK.drive.episodes));
+            completePTEpisodes1NK.setText(Integer.toString(this.StudioNK.drive.episodesPT));
+            totalEarningsLabelNK.setText(Integer.toString(this.StudioNK.episodeEarnings));
+            pmMoneyLost1NK.setText(Integer.toString(this.StudioNK.pm.pocketLost));
+            utilidadTotal1.setText(Integer.toString(this.StudioNK.totalEarnings));
+            costos1.setText(Integer.toString(this.StudioNK.operativeCosts));
         }
         
 
@@ -197,6 +202,8 @@ public class MainUI extends javax.swing.JFrame {
         daysLeftLabel = new javax.swing.JLabel();
         pmFaultsLabel = new javax.swing.JLabel();
         pmMoneyLost1 = new javax.swing.JLabel();
+        jLabel42 = new javax.swing.JLabel();
+        costos = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel41 = new javax.swing.JLabel();
@@ -248,6 +255,8 @@ public class MainUI extends javax.swing.JFrame {
         jLabel65 = new javax.swing.JLabel();
         pmFaultsLabelNK = new javax.swing.JLabel();
         pmMoneyLost1NK = new javax.swing.JLabel();
+        jLabel66 = new javax.swing.JLabel();
+        costos1 = new javax.swing.JLabel();
         nickFondo = new javax.swing.JLabel();
         doblajesMax2 = new javax.swing.JLabel();
 
@@ -572,7 +581,7 @@ public class MainUI extends javax.swing.JFrame {
         utilidadTotal.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         utilidadTotal.setForeground(new java.awt.Color(0, 0, 0));
         utilidadTotal.setText("0");
-        jPanel2.add(utilidadTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 60, 230, 50));
+        jPanel2.add(utilidadTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 90, 230, 50));
 
         jLabel23.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         jLabel23.setForeground(new java.awt.Color(0, 0, 0));
@@ -591,7 +600,7 @@ public class MainUI extends javax.swing.JFrame {
 
         jLabel24.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         jLabel24.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel24.setText("UTILIDAD TOTAL = ");
+        jLabel24.setText("COSTOS = ");
         jPanel2.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 60, 200, 50));
 
         jLabel25.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
@@ -649,6 +658,16 @@ public class MainUI extends javax.swing.JFrame {
         pmMoneyLost1.setText("0");
         jPanel2.add(pmMoneyLost1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 420, 160, 60));
 
+        jLabel42.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        jLabel42.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel42.setText("UTILIDAD TOTAL = ");
+        jPanel2.add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 90, 200, 50));
+
+        costos.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        costos.setForeground(new java.awt.Color(0, 0, 0));
+        costos.setText("0");
+        jPanel2.add(costos, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 60, 230, 50));
+
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/CNSTUDIOfONDO33 (1).jpg"))); // NOI18N
         jLabel14.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLabel14.setOpaque(true);
@@ -672,7 +691,7 @@ public class MainUI extends javax.swing.JFrame {
         jLabel43.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         jLabel43.setForeground(new java.awt.Color(0, 0, 0));
         jLabel43.setText("DÍAS PARA LA ENTREGA:");
-        jPanel3.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 0, 240, 50));
+        jPanel3.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 0, 240, 50));
 
         daysLeftLabelNK.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         daysLeftLabelNK.setForeground(new java.awt.Color(0, 0, 0));
@@ -682,22 +701,22 @@ public class MainUI extends javax.swing.JFrame {
         totalEarningsLabelNK.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         totalEarningsLabelNK.setForeground(new java.awt.Color(0, 0, 0));
         totalEarningsLabelNK.setText("0");
-        jPanel3.add(totalEarningsLabelNK, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 30, 170, 50));
+        jPanel3.add(totalEarningsLabelNK, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 30, 170, 50));
 
         jLabel44.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         jLabel44.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel44.setText("GANANCIA TOTAL = ");
-        jPanel3.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 30, 200, 50));
+        jLabel44.setText("GANANCIA EN BRUTO= ");
+        jPanel3.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 30, 230, 50));
 
         jLabel45.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         jLabel45.setForeground(new java.awt.Color(0, 0, 0));
         jLabel45.setText("UTILIDAD TOTAL = ");
-        jPanel3.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 60, 200, 50));
+        jPanel3.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 90, 200, 50));
 
         utilidadTotal1.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         utilidadTotal1.setForeground(new java.awt.Color(0, 0, 0));
         utilidadTotal1.setText("0");
-        jPanel3.add(utilidadTotal1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 60, 130, 50));
+        jPanel3.add(utilidadTotal1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 90, 190, 50));
 
         jLabel46.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         jLabel46.setForeground(new java.awt.Color(0, 0, 0));
@@ -922,6 +941,16 @@ public class MainUI extends javax.swing.JFrame {
         pmMoneyLost1NK.setText("0");
         jPanel3.add(pmMoneyLost1NK, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 440, 110, -1));
 
+        jLabel66.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        jLabel66.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel66.setText("COSTOS = ");
+        jPanel3.add(jLabel66, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 60, 200, 50));
+
+        costos1.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        costos1.setForeground(new java.awt.Color(0, 0, 0));
+        costos1.setText("0");
+        jPanel3.add(costos1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 60, 230, 50));
+
         nickFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/NickStudioFondo.png"))); // NOI18N
         nickFondo.setText("jLabel15");
         jPanel3.add(nickFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 470));
@@ -1093,6 +1122,8 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JLabel completeEpisodes1NK;
     private javax.swing.JLabel completePTEpisodes1;
     private javax.swing.JLabel completePTEpisodes1NK;
+    private javax.swing.JLabel costos;
+    private javax.swing.JLabel costos1;
     private javax.swing.JTextField dayDuration;
     private javax.swing.JLabel daysLeftLabel;
     private javax.swing.JLabel daysLeftLabelNK;
@@ -1154,6 +1185,7 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel45;
@@ -1179,6 +1211,7 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel63;
     private javax.swing.JLabel jLabel64;
     private javax.swing.JLabel jLabel65;
+    private javax.swing.JLabel jLabel66;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
