@@ -3,7 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package sist.operativo;
+import static java.lang.Thread.sleep;
 import java.util.concurrent.Semaphore;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author Emilio Jr
@@ -96,6 +99,7 @@ public class Studio {
         this.director = new Director(this, dayDuration, this.counterAccess);
         this.pm = new ProjectManager(dayDuration, this.counterAccess, this.director, this);
         
+        this.counter.start();
         this.director.start();
         this.pm.start();
     }     
@@ -140,5 +144,20 @@ public class Studio {
     
     public void sumTotalEarnings(){
         this.totalEarnings = this.episodeEarnings - this.operativeCosts;
+    }
+    
+    public void addWorker(){
+        try {
+            Worker[] newWorkers = new Worker[this.screenWriters.length+1];
+            System.arraycopy(this.screenWriters, 0, newWorkers, 0, this.screenWriters.length);
+            newWorkers[this.screenWriters.length] = new Worker(0, this.drive, this.scripts);
+            
+            sleep(this.counter.timeLeft);
+            System.out.println("empieza");
+            newWorkers[this.screenWriters.length].start();
+            this.screenWriters = newWorkers;
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Studio.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

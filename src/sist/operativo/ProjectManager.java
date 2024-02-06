@@ -67,7 +67,9 @@ public class ProjectManager extends Thread{
             this.state = "Cambiando contador";
             Thread.sleep(hour()*8); /* 8 horas  que el pm se toma para cambiando el contador con los días restantes para la entrega.*/
             if (this.studio.counter.daysLeft > 0) {
+                this.studio.counter.state += 1;
                 this.studio.counter.daysLeft -= 1; /*va quitando 1 día al terminar las 8horas (o sea se acaban las 24 horas de trabajo)*/
+                this.studio.counter.state -= 1;
             }               
             this.trafficLight.release();
         } catch (InterruptedException ex) {

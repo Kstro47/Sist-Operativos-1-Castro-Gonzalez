@@ -22,6 +22,7 @@ public class Worker extends Thread {
     public int daysWorked = 0;
     public Semaphore trafficLight;
     public Drive drive;
+    public int wea = 0;
     
     public Worker(int type, Drive drive, Semaphore trafficLight){
         this.type = type;
@@ -68,7 +69,9 @@ public class Worker extends Thread {
         switch (this.type) {
             case 0 -> { 
                 // Si alcanza los 3 dias trabajados solicita permiso al drive para guardar el guión
-                if (this.daysWorked > 3) {
+                if (this.daysWorked > 3) {                                        
+                    wea += 1;
+                    System.out.println(wea);
                     if (!this.drive.fullScripts()) {
                         try {
                             this.trafficLight.acquire();
@@ -149,9 +152,10 @@ public class Worker extends Thread {
     
     @Override
     public void run(){
+
         while(true){
             // Se suma salario, trabaja, y pasa un día.
-            try {
+            try {             
                 fortnight();
                 work();
                 sleep(Studio.dayDuration);
