@@ -3,10 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package sist.operativo;
-import static java.lang.Thread.sleep;
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Emilio Jr
@@ -146,18 +146,117 @@ public class Studio {
         this.totalEarnings = this.episodeEarnings - this.operativeCosts;
     }
     
-    public void addWorker(){
-        try {
-            Worker[] newWorkers = new Worker[this.screenWriters.length+1];
-            System.arraycopy(this.screenWriters, 0, newWorkers, 0, this.screenWriters.length);
-            newWorkers[this.screenWriters.length] = new Worker(0, this.drive, this.scripts);
-            
-            sleep(this.counter.timeLeft);
-            System.out.println("empieza");
-            newWorkers[this.screenWriters.length].start();
-            this.screenWriters = newWorkers;
-        } catch (InterruptedException ex) {
-            Logger.getLogger(Studio.class.getName()).log(Level.SEVERE, null, ex);
+    public boolean isFull(){
+        int maxWorkers = 0; 
+        maxWorkers = this.screenWriters.length + this.designers.length + this.animators.length + this.dubsActor.length + this.plotTwistsWriters.length + this.assemblers.length;
+        return 21 > maxWorkers;
+    }
+    
+    public void addWorker(int type){
+        if (!this.isFull()) {
+            JOptionPane.showMessageDialog(null, "No se pueden tener más de 21 trabajadores.");
+        } else {
+            try {
+                switch (type) {
+                    case 0 ->                     {
+                        Worker[] newWorkers = new Worker[this.screenWriters.length+1];
+                        System.arraycopy(this.screenWriters, 0, newWorkers, 0, this.screenWriters.length);
+                        newWorkers[this.screenWriters.length] = new Worker(0, this.drive, this.scripts);
+                        newWorkers[this.screenWriters.length].start();
+                        Worker.sleep(this.counter.timeLeft);
+                        this.screenWriters = newWorkers;
+                    }
+                    case 1 ->                     {
+                        Worker[] newWorkers = new Worker[this.designers.length+1];
+                        System.arraycopy(this.designers, 0, newWorkers, 0, this.designers.length);
+                        newWorkers[this.designers.length] = new Worker(1, this.drive, this.scenarios);
+                        newWorkers[this.designers.length].start();
+                        Worker.sleep(this.counter.timeLeft);
+                        this.designers = newWorkers;
+                    }
+                    case 2 ->                     {
+                        Worker[] newWorkers = new Worker[this.animators.length+1];
+                        System.arraycopy(this.animators, 0, newWorkers, 0, this.animators.length);
+                        newWorkers[this.animators.length] = new Worker(2, this.drive, this.animations);
+                        newWorkers[this.animators.length].start();
+                        Worker.sleep(this.counter.timeLeft);
+                        this.animators = newWorkers;
+                    }
+                    case 3 ->                     {
+                        Worker[] newWorkers = new Worker[this.dubsActor.length+1];
+                        System.arraycopy(this.dubsActor, 0, newWorkers, 0, this.dubsActor.length);
+                        newWorkers[this.dubsActor.length] = new Worker(3, this.drive, this.dubs);
+                        newWorkers[this.dubsActor.length].start();
+                        Worker.sleep(this.counter.timeLeft);
+                        this.dubsActor = newWorkers;
+                    }
+                    case 4 ->                     {
+                        Worker[] newWorkers = new Worker[this.plotTwistsWriters.length+1];
+                        System.arraycopy(this.plotTwistsWriters, 0, newWorkers, 0, this.plotTwistsWriters.length);
+                        newWorkers[this.plotTwistsWriters.length] = new Worker(4, this.drive, this.plotTwists);
+                        newWorkers[this.plotTwistsWriters.length].start();
+                        Worker.sleep(this.counter.timeLeft);
+                        this.plotTwistsWriters = newWorkers;
+                    }
+                    case 5 -> {
+                        Assembler[] newAssemblers = new Assembler[this.assemblers.length+1];
+                        System.arraycopy(this.assemblers, 0, newAssemblers, 0, this.assemblers.length);
+                        newAssemblers[this.assemblers.length] = new Assembler(Studio.type, this.drive, this.parts, Studio.dayDuration);
+                        newAssemblers[this.assemblers.length].start();
+                        Assembler.sleep(this.counter.timeLeft);
+                        this.assemblers = newAssemblers;
+                    }
+                    default -> {
+                    }
+                }
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Studio.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
+        
+    }
+    
+    public void deleteWorker(int type){
+        switch (type) {
+            case 0 ->                 {
+                    Worker[] newWorkers = new Worker[this.screenWriters.length-1];
+                    this.screenWriters[this.screenWriters.length-1].stopThread();
+                    System.arraycopy(this.screenWriters, 0, newWorkers, 0, this.screenWriters.length-1);
+                    this.screenWriters = newWorkers;
+                }
+            case 1 ->                 {
+                    Worker[] newWorkers = new Worker[this.designers.length-1];
+                    this.designers[this.designers.length-1].stopThread();
+                    System.arraycopy(this.designers, 0, newWorkers, 0, this.designers.length-1);
+                    this.designers = newWorkers;
+                }
+            case 2 ->                 {
+                    Worker[] newWorkers = new Worker[this.animators.length-1];
+                    this.animators[this.animators.length-1].stopThread();
+                    System.arraycopy(this.animators, 0, newWorkers, 0, this.animators.length-1);
+                    this.animators = newWorkers;
+                }
+            case 3 ->                 {
+                    Worker[] newWorkers = new Worker[this.dubsActor.length-1];
+                    this.dubsActor[this.dubsActor.length-1].stopThread();
+                    System.arraycopy(this.dubsActor, 0, newWorkers, 0, this.dubsActor.length-1);
+                    this.dubsActor = newWorkers;
+                }
+            case 4 ->                 {
+                    Worker[] newWorkers = new Worker[this.plotTwistsWriters.length-1];
+                    this.plotTwistsWriters[this.plotTwistsWriters.length-1].stopThread();
+                    System.arraycopy(this.plotTwistsWriters, 0, newWorkers, 0, this.plotTwistsWriters.length-1);
+                    this.plotTwistsWriters = newWorkers;
+                }
+            case 5 -> {
+                Assembler[] newAssemblers = new Assembler[this.assemblers.length-1];
+                this.assemblers[this.assemblers.length-1].stopThread();
+                System.arraycopy(this.assemblers, 0, newAssemblers, 0, this.assemblers.length-1);
+                this.assemblers = newAssemblers;
+            }
+            default -> {
+            }
+        }
+        
     }
 }

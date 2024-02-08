@@ -20,6 +20,7 @@ public class Assembler extends Thread{
     public int counter;
     public Semaphore trafficLight;
     public boolean[] episodeParts = new boolean[5];
+    public boolean running = false;
     
     public Assembler(int type, Drive drive, Semaphore trafficLight, int time){
         this.type = type;
@@ -185,9 +186,14 @@ public class Assembler extends Thread{
               
     }
     
+    public void stopThread(){
+        this.running = false;
+    }
+    
     @Override
     public void run(){
-        while (true){
+        this.running = true;
+        while (this.running == true){
             try{
                 fortnight();
                 int assemble = checkDrive();

@@ -44,26 +44,34 @@ public class MainUI extends javax.swing.JFrame {
         String route = "src\\sist\\operativo\\parameters.txt";
         try {
             File archivo = new File(route);
+            int maxWorkers = 0;
             try (Scanner scanner = new Scanner(archivo)) {
                 String linea = scanner.nextLine();
                 this.parametros = linea.split(",");
+                for (int i = 2; i < this.parametros.length; i++) {
+                    maxWorkers += Integer.parseInt(this.parametros[i]);
+                }
+                if (maxWorkers > 21){
+                    JOptionPane.showMessageDialog(null, "Error de datos introducidos en TXT. La cantidad de trabajadores debe ser menor o igual a 21");
+                    System.exit(0);
+                }                
             }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
+                System.exit(0);
+            }     
+            for (int i = 0; i < 8; i++) {
+                try {
+                    if (validNum(parametros[i]) != -1) {
+                        this.JTextFieldArray[i].setText(parametros[i]);               
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Error de datos introducidos en TXT.");
+                        System.exit(0);
+                    }
+        } catch (Exception e){
+            JOptionPane.showMessageDialog(null, "Error de datos introducidos en TXT.");
             System.exit(0);
-        }     
-        for (int i = 0; i < 8; i++) {
-            try {
-                if (validNum(parametros[i]) != -1) {
-                    this.JTextFieldArray[i].setText(parametros[i]);               
-                } else {
-                    JOptionPane.showMessageDialog(null, "Error de datos introducidos en TXT.");
-                    System.exit(0);
-                }
-            } catch (Exception e){
-                    JOptionPane.showMessageDialog(null, "Error de datos introducidos en TXT.");
-                    System.exit(0);
-                }
+            }
         }
         
         this.StudioCN = new Studio(Integer.parseInt(this.parametros[0])*1000, Integer.parseInt(this.parametros[1]), Integer.parseInt(this.parametros[2]), Integer.parseInt(this.parametros[3]), Integer.parseInt(this.parametros[4]), Integer.parseInt(this.parametros[5]), Integer.parseInt(this.parametros[6]), Integer.parseInt(this.parametros[7]), 0);
@@ -98,10 +106,22 @@ public class MainUI extends javax.swing.JFrame {
             completePTEpisodes1NK.setText(Integer.toString(this.StudioNK.drive.episodesPT));
             totalEarningsLabelNK.setText(Integer.toString(this.StudioNK.episodeEarnings));
             pmMoneyLost1NK.setText(Integer.toString(this.StudioNK.pm.pocketLost));
-            utilidadTotal1.setText(Integer.toString(this.StudioNK.totalEarnings));
+            utilidadTotal2.setText(Integer.toString(this.StudioNK.totalEarnings));
             costos1.setText(Integer.toString(this.StudioNK.operativeCosts));
             
             numScripters.setText(Integer.toString(this.StudioCN.screenWriters.length));
+            numDesigners.setText(Integer.toString(this.StudioCN.designers.length));
+            numAnimators.setText(Integer.toString(this.StudioCN.animators.length));
+            numDubbers.setText(Integer.toString(this.StudioCN.dubsActor.length));
+            numPlotTwisters.setText(Integer.toString(this.StudioCN.plotTwistsWriters.length));
+            numAssemblers.setText(Integer.toString(this.StudioCN.assemblers.length));
+            
+            numScripters1.setText(Integer.toString(this.StudioNK.screenWriters.length));
+            numDesigners1.setText(Integer.toString(this.StudioNK.designers.length));
+            numAnimators1.setText(Integer.toString(this.StudioNK.animators.length));
+            numDubbers1.setText(Integer.toString(this.StudioNK.dubsActor.length));
+            numPlotTwisters1.setText(Integer.toString(this.StudioNK.plotTwistsWriters.length));
+            numAssemblers1.setText(Integer.toString(this.StudioNK.assemblers.length));
         }
         
 
@@ -201,17 +221,17 @@ public class MainUI extends javax.swing.JFrame {
         jLabel42 = new javax.swing.JLabel();
         costos = new javax.swing.JLabel();
         jButton13 = new javax.swing.JButton();
-        jButton14 = new javax.swing.JButton();
+        deleteScripts = new javax.swing.JButton();
         jButton15 = new javax.swing.JButton();
         jButton16 = new javax.swing.JButton();
         jButton17 = new javax.swing.JButton();
         jButton18 = new javax.swing.JButton();
         numScripters = new javax.swing.JLabel();
-        utilidadTotal9 = new javax.swing.JLabel();
-        utilidadTotal10 = new javax.swing.JLabel();
-        utilidadTotal11 = new javax.swing.JLabel();
-        utilidadTotal12 = new javax.swing.JLabel();
-        utilidadTotal13 = new javax.swing.JLabel();
+        numDesigners = new javax.swing.JLabel();
+        numAnimators = new javax.swing.JLabel();
+        numDubbers = new javax.swing.JLabel();
+        numPlotTwisters = new javax.swing.JLabel();
+        numAssemblers = new javax.swing.JLabel();
         jButton19 = new javax.swing.JButton();
         jButton20 = new javax.swing.JButton();
         jButton21 = new javax.swing.JButton();
@@ -227,7 +247,6 @@ public class MainUI extends javax.swing.JFrame {
         totalEarningsLabelNK = new javax.swing.JLabel();
         jLabel44 = new javax.swing.JLabel();
         jLabel45 = new javax.swing.JLabel();
-        utilidadTotal1 = new javax.swing.JLabel();
         jLabel46 = new javax.swing.JLabel();
         completePTEpisodes1NK = new javax.swing.JLabel();
         jLabel47 = new javax.swing.JLabel();
@@ -266,11 +285,11 @@ public class MainUI extends javax.swing.JFrame {
         jLabel66 = new javax.swing.JLabel();
         costos1 = new javax.swing.JLabel();
         utilidadTotal2 = new javax.swing.JLabel();
-        utilidadTotal3 = new javax.swing.JLabel();
-        utilidadTotal4 = new javax.swing.JLabel();
-        utilidadTotal5 = new javax.swing.JLabel();
-        utilidadTotal6 = new javax.swing.JLabel();
-        utilidadTotal7 = new javax.swing.JLabel();
+        numDesigners1 = new javax.swing.JLabel();
+        numDubbers1 = new javax.swing.JLabel();
+        numPlotTwisters1 = new javax.swing.JLabel();
+        numAssemblers1 = new javax.swing.JLabel();
+        numScripters1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -283,6 +302,7 @@ public class MainUI extends javax.swing.JFrame {
         jButton10 = new javax.swing.JButton();
         jButton11 = new javax.swing.JButton();
         jButton12 = new javax.swing.JButton();
+        numAnimators1 = new javax.swing.JLabel();
         nickFondo = new javax.swing.JLabel();
 
         jMenuItem1.setText("jMenuItem1");
@@ -653,13 +673,13 @@ public class MainUI extends javax.swing.JFrame {
         });
         jPanel2.add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 320, -1, 20));
 
-        jButton14.setText("-");
-        jButton14.addActionListener(new java.awt.event.ActionListener() {
+        deleteScripts.setText("-");
+        deleteScripts.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton14ActionPerformed(evt);
+                deleteScriptsActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 170, -1, -1));
+        jPanel2.add(deleteScripts, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 170, -1, -1));
 
         jButton15.setText("-");
         jButton15.addActionListener(new java.awt.event.ActionListener() {
@@ -699,35 +719,35 @@ public class MainUI extends javax.swing.JFrame {
         numScripters.setText("0");
         jPanel2.add(numScripters, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 150, 50, 60));
 
-        utilidadTotal9.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
-        utilidadTotal9.setForeground(new java.awt.Color(0, 0, 0));
-        utilidadTotal9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        utilidadTotal9.setText("0");
-        jPanel2.add(utilidadTotal9, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 180, 50, 60));
+        numDesigners.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        numDesigners.setForeground(new java.awt.Color(0, 0, 0));
+        numDesigners.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        numDesigners.setText("0");
+        jPanel2.add(numDesigners, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 180, 50, 60));
 
-        utilidadTotal10.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
-        utilidadTotal10.setForeground(new java.awt.Color(0, 0, 0));
-        utilidadTotal10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        utilidadTotal10.setText("0");
-        jPanel2.add(utilidadTotal10, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 210, 50, 60));
+        numAnimators.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        numAnimators.setForeground(new java.awt.Color(0, 0, 0));
+        numAnimators.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        numAnimators.setText("0");
+        jPanel2.add(numAnimators, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 210, 50, 60));
 
-        utilidadTotal11.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
-        utilidadTotal11.setForeground(new java.awt.Color(0, 0, 0));
-        utilidadTotal11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        utilidadTotal11.setText("0");
-        jPanel2.add(utilidadTotal11, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 240, 50, 60));
+        numDubbers.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        numDubbers.setForeground(new java.awt.Color(0, 0, 0));
+        numDubbers.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        numDubbers.setText("0");
+        jPanel2.add(numDubbers, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 240, 50, 60));
 
-        utilidadTotal12.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
-        utilidadTotal12.setForeground(new java.awt.Color(0, 0, 0));
-        utilidadTotal12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        utilidadTotal12.setText("0");
-        jPanel2.add(utilidadTotal12, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 270, 50, 60));
+        numPlotTwisters.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        numPlotTwisters.setForeground(new java.awt.Color(0, 0, 0));
+        numPlotTwisters.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        numPlotTwisters.setText("0");
+        jPanel2.add(numPlotTwisters, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 270, 50, 60));
 
-        utilidadTotal13.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
-        utilidadTotal13.setForeground(new java.awt.Color(0, 0, 0));
-        utilidadTotal13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        utilidadTotal13.setText("0");
-        jPanel2.add(utilidadTotal13, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 300, 50, 60));
+        numAssemblers.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        numAssemblers.setForeground(new java.awt.Color(0, 0, 0));
+        numAssemblers.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        numAssemblers.setText("0");
+        jPanel2.add(numAssemblers, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 300, 50, 60));
 
         jButton19.setText("+");
         jButton19.addActionListener(new java.awt.event.ActionListener() {
@@ -821,12 +841,6 @@ public class MainUI extends javax.swing.JFrame {
         jLabel45.setForeground(new java.awt.Color(0, 0, 0));
         jLabel45.setText("UTILIDAD TOTAL = ");
         jPanel3.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 90, 200, 50));
-
-        utilidadTotal1.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
-        utilidadTotal1.setForeground(new java.awt.Color(0, 0, 0));
-        utilidadTotal1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        utilidadTotal1.setText("0");
-        jPanel3.add(utilidadTotal1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 180, 50, 60));
 
         jLabel46.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         jLabel46.setForeground(new java.awt.Color(0, 0, 0));
@@ -1018,35 +1032,35 @@ public class MainUI extends javax.swing.JFrame {
         utilidadTotal2.setText("0");
         jPanel3.add(utilidadTotal2, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 90, 190, 50));
 
-        utilidadTotal3.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
-        utilidadTotal3.setForeground(new java.awt.Color(0, 0, 0));
-        utilidadTotal3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        utilidadTotal3.setText("0");
-        jPanel3.add(utilidadTotal3, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 210, 50, 60));
+        numDesigners1.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        numDesigners1.setForeground(new java.awt.Color(0, 0, 0));
+        numDesigners1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        numDesigners1.setText("0");
+        jPanel3.add(numDesigners1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 180, 50, 60));
 
-        utilidadTotal4.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
-        utilidadTotal4.setForeground(new java.awt.Color(0, 0, 0));
-        utilidadTotal4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        utilidadTotal4.setText("0");
-        jPanel3.add(utilidadTotal4, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 240, 50, 60));
+        numDubbers1.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        numDubbers1.setForeground(new java.awt.Color(0, 0, 0));
+        numDubbers1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        numDubbers1.setText("0");
+        jPanel3.add(numDubbers1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 240, 50, 60));
 
-        utilidadTotal5.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
-        utilidadTotal5.setForeground(new java.awt.Color(0, 0, 0));
-        utilidadTotal5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        utilidadTotal5.setText("0");
-        jPanel3.add(utilidadTotal5, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 270, 50, 60));
+        numPlotTwisters1.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        numPlotTwisters1.setForeground(new java.awt.Color(0, 0, 0));
+        numPlotTwisters1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        numPlotTwisters1.setText("0");
+        jPanel3.add(numPlotTwisters1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 270, 50, 60));
 
-        utilidadTotal6.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
-        utilidadTotal6.setForeground(new java.awt.Color(0, 0, 0));
-        utilidadTotal6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        utilidadTotal6.setText("0");
-        jPanel3.add(utilidadTotal6, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 300, 50, 60));
+        numAssemblers1.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        numAssemblers1.setForeground(new java.awt.Color(0, 0, 0));
+        numAssemblers1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        numAssemblers1.setText("0");
+        jPanel3.add(numAssemblers1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 300, 50, 60));
 
-        utilidadTotal7.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
-        utilidadTotal7.setForeground(new java.awt.Color(0, 0, 0));
-        utilidadTotal7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        utilidadTotal7.setText("0");
-        jPanel3.add(utilidadTotal7, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 150, 50, 60));
+        numScripters1.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        numScripters1.setForeground(new java.awt.Color(0, 0, 0));
+        numScripters1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        numScripters1.setText("0");
+        jPanel3.add(numScripters1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 150, 50, 60));
 
         jButton1.setText("+");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -1144,6 +1158,12 @@ public class MainUI extends javax.swing.JFrame {
         });
         jPanel3.add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 320, -1, 20));
 
+        numAnimators1.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        numAnimators1.setForeground(new java.awt.Color(0, 0, 0));
+        numAnimators1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        numAnimators1.setText("0");
+        jPanel3.add(numAnimators1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 210, 50, 60));
+
         nickFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/NickStudioFondo.png"))); // NOI18N
         nickFondo.setText("jLabel15");
         jPanel3.add(nickFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 470));
@@ -1192,120 +1212,146 @@ public class MainUI extends javax.swing.JFrame {
     private void saveChangesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveChangesActionPerformed
         String texto = "";
         String route = "src\\sist\\operativo\\parameters.txt";
+        int maxWorkers = 0-Integer.parseInt(this.JTextFieldArray[0].getText())-Integer.parseInt(this.JTextFieldArray[1].getText());
         for (int i = 0; i < 8; i++) {
             if (validNum(this.JTextFieldArray[i].getText()) != -1 ) {
                 if (i == 7) {
                     texto += this.JTextFieldArray[i].getText();
                 } else {
                     texto += this.JTextFieldArray[i].getText() + ",";                
-                }               
+                }  
+                maxWorkers += Integer.parseInt(this.JTextFieldArray[i].getText());
             } else {
                 break;
             }
         }
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(route))) {
+        if (maxWorkers <= 21) {
+            try (BufferedWriter bw = new BufferedWriter(new FileWriter(route))) {
             bw.write(texto);
-        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "Guardado exitoso.");
+            } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "No se pudo guardar: " + e.getMessage());
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "No se pudo guardar: La máxima cantidad de trabajadores es 21.");
         }
+        
         
         
     }//GEN-LAST:event_saveChangesActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        this.StudioNK.addWorker(5);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        this.StudioNK.deleteWorker(0);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        this.StudioNK.addWorker(0);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+        this.StudioNK.deleteWorker(1);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
+        this.StudioNK.addWorker(1);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
+        this.StudioNK.deleteWorker(2);
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
+        this.StudioNK.addWorker(2);
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
+        this.StudioNK.deleteWorker(3);
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         // TODO add your handling code here:
+        this.StudioNK.addWorker(3);
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         // TODO add your handling code here:
+        this.StudioNK.deleteWorker(4);
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
         // TODO add your handling code here:
+        this.StudioNK.addWorker(4);
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
         // TODO add your handling code here:
+        this.StudioNK.deleteWorker(5);
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
         // TODO add your handling code here:
+        this.StudioCN.deleteWorker(5);
     }//GEN-LAST:event_jButton13ActionPerformed
 
-    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton14ActionPerformed
+    private void deleteScriptsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteScriptsActionPerformed
+        this.StudioCN.deleteWorker(0);
+    }//GEN-LAST:event_deleteScriptsActionPerformed
 
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
-        // TODO add your handling code here:
+        this.StudioCN.deleteWorker(1);
     }//GEN-LAST:event_jButton15ActionPerformed
 
     private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
-        // TODO add your handling code here:
+        this.StudioCN.deleteWorker(2);
     }//GEN-LAST:event_jButton16ActionPerformed
 
     private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
         // TODO add your handling code here:
+        this.StudioCN.deleteWorker(3);
     }//GEN-LAST:event_jButton17ActionPerformed
 
     private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
         // TODO add your handling code here:
+        this.StudioCN.deleteWorker(4);
     }//GEN-LAST:event_jButton18ActionPerformed
 
     private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
-        // TODO add your handling code here:
+        this.StudioCN.addWorker(1);
     }//GEN-LAST:event_jButton19ActionPerformed
 
     private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
         // TODO add your handling code here:
+        this.StudioCN.addWorker(2);
     }//GEN-LAST:event_jButton20ActionPerformed
 
     private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
         // TODO add your handling code here:
+        this.StudioCN.addWorker(3);
     }//GEN-LAST:event_jButton21ActionPerformed
 
     private void jButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton22ActionPerformed
         // TODO add your handling code here:
+        this.StudioCN.addWorker(4);
     }//GEN-LAST:event_jButton22ActionPerformed
 
     private void jButton23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton23ActionPerformed
-        // TODO add your handling code here:
+        this.StudioCN.addWorker(5);
     }//GEN-LAST:event_jButton23ActionPerformed
 
     private void sumScriptsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sumScriptsActionPerformed
-        this.StudioCN.addWorker();
+        this.StudioCN.addWorker(0);
     }//GEN-LAST:event_sumScriptsActionPerformed
 
     /**
@@ -1361,6 +1407,7 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JTextField dayDuration;
     private javax.swing.JLabel daysLeftLabel;
     private javax.swing.JLabel daysLeftLabelNK;
+    private javax.swing.JButton deleteScripts;
     private javax.swing.JTextField designerQtty;
     private javax.swing.JLabel directorStateLabel;
     private javax.swing.JLabel directorStateLabelNK;
@@ -1381,7 +1428,6 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
-    private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton17;
@@ -1469,7 +1515,18 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel nickFondo;
+    private javax.swing.JLabel numAnimators;
+    private javax.swing.JLabel numAnimators1;
+    private javax.swing.JLabel numAssemblers;
+    private javax.swing.JLabel numAssemblers1;
+    private javax.swing.JLabel numDesigners;
+    private javax.swing.JLabel numDesigners1;
+    private javax.swing.JLabel numDubbers;
+    private javax.swing.JLabel numDubbers1;
+    private javax.swing.JLabel numPlotTwisters;
+    private javax.swing.JLabel numPlotTwisters1;
     private javax.swing.JLabel numScripters;
+    private javax.swing.JLabel numScripters1;
     private javax.swing.JTextField plotTwistWritterQtty;
     private javax.swing.JLabel plotwistsDisp;
     private javax.swing.JLabel plotwistsDispNK;
@@ -1488,18 +1545,7 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JLabel totalEarningsLabel;
     private javax.swing.JLabel totalEarningsLabelNK;
     private javax.swing.JLabel utilidadTotal;
-    private javax.swing.JLabel utilidadTotal1;
-    private javax.swing.JLabel utilidadTotal10;
-    private javax.swing.JLabel utilidadTotal11;
-    private javax.swing.JLabel utilidadTotal12;
-    private javax.swing.JLabel utilidadTotal13;
     private javax.swing.JLabel utilidadTotal2;
-    private javax.swing.JLabel utilidadTotal3;
-    private javax.swing.JLabel utilidadTotal4;
-    private javax.swing.JLabel utilidadTotal5;
-    private javax.swing.JLabel utilidadTotal6;
-    private javax.swing.JLabel utilidadTotal7;
-    private javax.swing.JLabel utilidadTotal9;
     private javax.swing.JTextField voiceActorsQtty;
     // End of variables declaration//GEN-END:variables
 }

@@ -23,6 +23,7 @@ public class Worker extends Thread {
     public Semaphore trafficLight;
     public Drive drive;
     public int wea = 0;
+    public boolean running = false;
     
     public Worker(int type, Drive drive, Semaphore trafficLight){
         this.type = type;
@@ -148,12 +149,15 @@ public class Worker extends Thread {
         // 0 para Guionista 1 guión cada 4 días
             }
     
+    public void stopThread(){
+        this.running = false;
+    }
     
     
     @Override
     public void run(){
-
-        while(true){
+        this.running = true;
+        while(this.running == true){
             // Se suma salario, trabaja, y pasa un día.
             try {             
                 fortnight();
