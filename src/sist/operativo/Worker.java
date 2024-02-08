@@ -22,7 +22,6 @@ public class Worker extends Thread {
     public int daysWorked = 0;
     public Semaphore trafficLight;
     public Drive drive;
-    public int wea = 0;
     public boolean running = false;
     
     public Worker(int type, Drive drive, Semaphore trafficLight){
@@ -71,8 +70,6 @@ public class Worker extends Thread {
             case 0 -> { 
                 // Si alcanza los 3 dias trabajados solicita permiso al drive para guardar el guión
                 if (this.daysWorked > 3) {                                        
-                    wea += 1;
-                    System.out.println(wea);
                     if (!this.drive.fullScripts()) {
                         try {
                             this.trafficLight.acquire();
